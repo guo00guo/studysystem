@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>顶部导航栏</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="/css/x-admin.css" th:href="@{/css/x-admin.css}" media="all"/>
+    <link id="bg" rel="stylesheet" type="text/css" href="/css/skin_default.css" th:href="@{/css/skin_default.css}"/>
+</head>
+<body>
+<!--顶部-->
+<div class="layui-header header header-demo" id="admin_top">
+    <div class="layui-main">
+        <div>
+            <a class="logo" href="admin_index.html" th:href="@{admin_index.html}">
+                个性化学习系统
+            </a>
+        </div>
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item"><img src="/images/507_353_279.jpg" th:src="@{/images/507_353_279.jpg}" class="layui-circle"
+                                            style="border: 2px solid #A9B7B7;" width="35px" alt=""/></li>
+            <li class="layui-nav-item">
+                <a>admin</a>
+                <dl class="layui-nav-child">
+                    <dd><a th:href="@{/AdminInforPage}">个人信息</a></dd>
+                    <dd><a href="admin_adminInforEdit.html">切换帐号</a></dd>
+                    <dd><a style="cursor: pointer;" href="index.html">退出后台</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a>换肤</a>
+                <dl class="layui-nav-child">
+                    <dd><a id="default">默认</a></dd>
+                    <dd><a id="green">绿色</a></dd>
+                    <dd><a id="black">黑色</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--sidebar侧边导航栏-->
+<div class="layui-side layui-bg-black x-side" id="sidebar">
+    <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="side">
+
+            <!--导航管理-->
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>导航管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="adminGetAllGoodCourse"><!---->
+                            <cite>首页精品课程管理</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="adminGetAllRollCourse">
+                            <cite>首页轮播课程管理</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                    <!--<dd class="">-->
+                    <!--<dd class="">-->
+                    <!--<a href="javascript:;" _href="adminGetAllDayCourse"  >-->
+                    <!--<cite>每日一课课程管理</cite>-->
+                    <!--</a>-->
+                    <!--</dd>-->
+                    <!--</dd>-->
+                </dl>
+            </li>
+
+            <!--课程管理-->
+            <li class="layui-nav-item">
+                <a class="javascript:;" _href="adminGetAllCourse/null/1">
+                    <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>课程管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="adminGetAllCourseSortOne/null/1">
+                            <cite>分类管理</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="adminGetAllCourse/null/1">
+                            <cite>课程管理</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                </dl>
+            </li>
+
+            <!--用户管理-->
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;" _href="User_management.html">
+                    <i class="layui-icon" style="top: 3px;">&#xe612;</i><cite>用户管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="adminGetAllStudent/null/1">
+                            <cite>学习者管理</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="adminGetAllTeacher/null/1">
+                            <cite>教师管理</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                </dl>
+            </li>
+
+            <!--搜索管理-->
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe612;</i><cite>搜索管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="findTopSerachByName/null/1">
+                            <cite>热搜设置</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function userLogout() {
+        alert("123");
+        $.ajax({
+            type: 'post',
+            url: 'user/logout',
+            success: function () {
+                if (!window.sessionStorage) {
+                    alert("浏览器不支持sessionStorage");
+                    return false;
+                } else {
+                    var storage = window.sessionStorage;
+                    alert("退出成功");
+                    storage.clear();
+
+                    window.location.href = 'admin_index.html';
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+
+</html>

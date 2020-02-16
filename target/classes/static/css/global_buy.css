@@ -1,0 +1,179 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+    background:#f1f2f7;
+}
+.buy_top {
+    background: #f0f0f0;
+    border-bottom: 1px solid #d1d1d1;
+    padding-top: 7px;
+    height: 12px;
+    line-height: 12px;
+    padding-bottom: 6px;
+}
+
+    .buy_top dl {
+        width: 1000px;
+        margin: 0 auto;
+        overflow:hidden;
+    }
+
+    .buy_top dt {
+        float: left;
+    }
+
+    .buy_top dd {
+        float: right;
+        padding: 0 22px;
+        margin-right:-1px;
+        border-right: 1px solid #bbbbbb;
+    }
+        .buy_top dd .a1 {
+            color:#0075de;
+        }
+.buy_state {
+    width:1000px;
+    margin:0 auto;
+    padding-top:36px;
+}
+.buy_state .buy_logo {
+    float:left;
+}
+.buy_state .state_1 {
+    float:right;
+    background:url(../images/state_1.jpg) no-repeat;
+    width:477px;
+    height:70px;
+    margin-right:25px;
+}
+.buy_state .state_2 {
+    float:right;
+    background:url(../images/state_2.jpg) no-repeat;
+    width:477px;
+    height:70px;
+    margin-right:25px;
+}
+.buy_state .state_3 {
+    float:right;
+    background:url(../images/state_3.jpg) no-repeat;
+    width:477px;
+    height:70px;
+    margin-right:25px;
+}
+.buy_box {
+    width:950px;
+    margin:0 auto;
+    margin-top:45px;
+    padding:0 25px;
+    padding-bottom:85px;
+    border-top:5px solid #d2d2d2;
+    background:#fff;
+}
+.buy_box .list_title{
+    margin-top:37px;
+    margin-bottom:25px;
+    font-size:16px;
+    color:#333333;
+    }
+    .buy_box .list_title span {
+        display:inline-block;
+        border-radius:5px;
+        width:5px;
+        height:20px;
+        vertical-align:middle;
+        background:#1cb177;
+        margin-right:10px;
+        margin-top:-2px;
+    }
+.buy_box .sub_price ul{
+        border-bottom:1px solid #e5e5e5;
+        display:inline-block;
+        width:100%;
+    }
+    .buy_box .sub_price li {
+        float:right;
+        margin-top:25px;
+        line-height:30px;
+        color:#aaaaaa;
+        position:relative;
+        text-align:right;
+        margin-bottom:15px;
+    }
+        .buy_box .sub_price .s1 {
+            font-size:30px;
+            color:#c40000;
+            margin-left:10px;
+        }
+        .buy_box .sub_price .s2 {
+            color:#333333;
+            margin-left:5px;
+        }
+    .buy_box .sub_price .s3 {
+        color:#ff6600;
+    }
+    .buy_box .sub_price .s4 {
+        position:absolute;
+        right:2px;
+        bottom:5px;
+        width:600px;
+    }
+    .buy_box .sub_price .s5 {
+        color:#333;
+    }
+    .buy_box .sub_price dl {
+        float:right;
+        margin-top:30px;
+    }
+
+    .buy_box .sub_price .settlement {
+        width:200px;
+        height:40px;
+        color:#fff;
+        background:#005db1;
+        margin-left:25px;
+        display:inline-block;
+        font-size:20px;
+        line-height:40px;
+        text-align:center;
+    }
+        .buy_box .sub_price .settlement:hover {
+            background: #007ae8;
+        }
+    .buy_box .sub_price .gotopay {
+        background:#c40000;
+    }
+    .buy_box .sub_price .gotopay:hover {
+        background:#ff0000;
+    }
+    .buy_box .sub_price .inp_c {
+        vertical-align:middle;
+        margin-top:-2px;
+        margin-right:5px;
+    }
+    .buy_box .sub_price .ponit,.buy_box .sub_price .phone {
+        width:120px;
+        border:1px solid #e5e5e5;
+        height:23px;
+        line-height:23px;
+        font-size:12px;
+        margin-left:11px;
+    }
+.buy_foot {
+    width:1000px;
+    margin:0 auto;
+    margin-bottom:35px;
+    color:#888888;
+    text-align:center;
+}
+    .buy_foot ul {
+        margin:40px 0 20px 0;
+    }
+    .buy_foot ul a {
+        margin:0 17px;
+    }
+    .buy_foot p {
+        line-height: 22px;
+    }
+    .buy_foot a {
+        color:#888888;
+    }

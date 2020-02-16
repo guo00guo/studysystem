@@ -1,0 +1,29 @@
+﻿/*分页*/
+
+    .pagingbar {
+        clear: both;
+        margin:0px auto 20px auto;
+        text-align:center;
+    }
+
+        .pagingbar a, .pagingbar span {
+            text-decoration: none;
+            color: #333333;
+            border-radius: 3px;
+        }
+
+        .pagingbar a, .pagingbar span {
+            padding: 5px 8px 5px 8px;
+            font-size: 14px;
+            margin-right: 3px;
+            border: solid 1px #bcbcbc;
+            line-height: 30px;
+            font-size: 12px;
+            background: #ffffff;
+        }
+
+        .pagingbar .current-page,.pagingbar .current_page {
+            background: #0099ff;
+            border: solid 1px #547DBE;
+            color: #ffffff;
+        }

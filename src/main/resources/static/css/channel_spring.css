@@ -1,0 +1,80 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0; padding:0}
+body{ background:#f2f2f2; font:12px/25px \5B8B\4F53; color:#333;}
+#head{ background:#ffffff;}
+a{color:#333333;text-decoration:none}
+a:hover{color:#09f;}
+em{font-style:normal}
+ul,li{list-style:none}
+img{border:0;vertical-align:middle}
+table{border-collapse:collapse;border-spacing:0}
+/*.ytArea:after,.box-are:after {content:""; display:table; clear:both}*/
+.ytArea {*zoom:1;   margin:0 auto;} 
+.fl,.ytArea .fl{float:left;display:inline}
+.fr,.ytArea .fr{float:right;display:inline}
+.hr10,.hr20 {clear:both;margin:0;padding:0;font-size:0;overflow:hidden;}
+.hr20 {height:20px;}
+.hr15 {height:15px;}
+.hr10 {height:10px;}
+.hr40 {height:40px;}
+.clear {clear:both; height:0px;margin:0;padding:0;font-size:0;overflow:hidden;}
+.ytArea,.minTopin,.headerIn,.mtcon,.titlebox,.banner{ width:1002px; margin:0 auto; position:relative}
+strong,b,em{font:12px/20px \5B8B\4F53; }
+b{ font-weight:bold;}
+
+/* 所在位置 */
+.p_wd{ width: 1002px; margin:0 auto; color:#666666; height:40px; font:12px/40px \5B8B\4F53}
+.p_wd a{ color:#2d64b3;}
+.logos{ background: url(../images/logo.jpg) no-repeat center; height: 71px;}
+
+
+/*   视频套餐分类   */
+.tv_box{ width:1002px; margin:0 auto}
+.tv_box .tv_list{ width:1002px; margin:0 auto; margin-bottom:30px;  display:inline-block;}
+.tv_list li{ width: 294px; padding:9px 9px 0px 9px; margin-top:30px; display: block; float: left; margin-right:30px; overflow: hidden;position: relative; border: 1px solid #dddddd;  background: #FFF;}
+.tv_list .nrm{ margin-right:0px;}
+.tv_list .imgas{ display:block; width: 293px; height: 210px; overflow: hidden; }
+.tv_list li .ab_img{position: absolute; top:6px; left:9px; width:53px; height:25px;
+ display: block; }/*background:url(../images/1_03.png) no-repeat left;*/
+
+.tv_list li .ab_img2{ position: absolute; top:6px; left:9px; width:53px; height:25px;
+ display: block; }/*background:url(../images/2_05.png) no-repeat left;*/
+.tv_list h3{ font-size: 16px; color:#333333; margin-top:10px; margin-bottom:5px;}
+.tv_list h3 a {
+	-webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+.tv_list h3 a:hover {
+	color:#09f;
+}
+.tv_list p{ font-size: 12px; color:#999; line-height:20px;}
+.pir_box{ width:290px; height:40px; margin:0 auto;  margin-top:20px; margin-bottom: 10px; color:#de252e; float: left;}
+
+.pir_box i{ font:bold 18px/25px microsoft yahei; background:none; }
+.pir_box em{ font:bold 30px Arial;}
+.pir_box strong{color:#999999; font:16px/25px microsoft yahei; text-decoration:line-through;}
+.pir_box a{
+	background-color:#ffae00; float: right; display: block; width: 115px; font:18px/37px microsoft yahei; height: 37px; text-align: center; color:#fff; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px;
+	 -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.pir_box a:hover{ background-color:#ff8800; float: right; display: block; width: 115px; }
+.pir_box .lef{ float: left;}
+.pir_box .rig{ float: right;}
+.timebox{ width:292px; font-size: 12px; padding:0px 10px; height: 25px;background:#f2f2f2; color:#8c8c8c; margin-left:-9px;}
+.t_lef{ float: left;  display:block; min-height: 13px; padding-left:5px; padding-top:2px;
+
+}
+/*background:url(../images/time.jpg) no-repeat left 5px;*/
+.t_lef span {color:#f60;}
+.t_rig{ float: right;}
+.t_rig i{ color:#ff6600}
+
+.pir_box .over{ background-color:#acacac;}
+.pir_box .over:hover{background-color:#acacac;}

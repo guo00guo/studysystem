@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <title>课程学习者信息</title>
+
+    <link href="css/global_channel.css" type="text/css" rel="stylesheet"/>
+    <link href="css/channel_course_detail.css" type="text/css" rel="stylesheet"/>
+    <link href="css/layer.css" type="text/css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.lazyload.js" type="text/javascript"></script>
+    <script src="js/echarts.min.js"></script>
+
+    <!--课程章节列表-->
+    <link href="css/banner_change/css.css" type="text/css" rel="stylesheet"/>
+
+</head>
+
+<body>
+<!--导入top.html-->
+<div id="top"></div>
+<script>
+    $("#top").load("top_teacher.html");
+</script>
+
+<div class="course_info_div">
+    <!-- [新版面] 开始-->
+    <div class="detail_info_new_courseInfor">
+        <!--** 分类菜单 **-->
+        <div class="pro_left_stu">
+            <img id="course_img" src="" alt="" width="150px" height="150px"/>
+        </div>
+        <div class="pro_middle">
+            <h1 id="course_name_h1"></h1>
+            <ol>
+                <li id="description_li" style="text-align: justify;"></li>
+            </ol>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div style="width: 40%; margin-left: 4%;margin-top: 1%;" class="studentInfo">
+        <div class="panel panel-default" style="text-align: left;">
+            <div class="panel-heading">
+                <h3 class="panel-title">学习者信息</h3>
+            </div>
+            <div class="panel-body" style="font-size: 16px;">
+                <table class="table table-bordered">
+                    <thead class="">
+                    <tr>
+                        <th scope="col">学习者编号</th>
+                        <th scope="col">学习者姓名</th>
+                        <th scope="col">学习者地址</th>
+                    </tr>
+                    </thead>
+                    <tbody class="infor_stu" style="font-size: 16px;">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="main" class="echarts"
+         style="width: 600px;height:400px; margin-top: 2%;margin-bottom:1%; margin-left:5%;"></div>
+
+</div>
+</div>
+
+<!--导入footer.html-->
+<div id="footer" style="width: 100%; float: left; display: block; position: relative;"></div>
+<script>
+    $("#footer").load("footer.html");
+</script>
+</body>
+
+<script>
+    var vars = window.location.search.substring(1);
+    var arrayList = vars.split("&");
+    var storage = window.sessionStorage;
+
+    function getQueryVariable(variable) {
+        for (var i = 0; i < arrayList.length; i++) {
+            var pair = arrayList[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+
+    var courseId = getQueryVariable("courseId");
+
+    if (courseId != null && courseId != '') {
+        if (!window.sessionStorage) {
+            alert("浏览器不支持sessionStorage");
+        }
+        $.ajax({
+            url: 'teacher/getStudentByCourseId',
+            type: 'post',
+            dataType: "json",
+            data: {
+                courseId: courseId
+            },
+            success: function (data) {
+                for (let j = 0; j < data.length; j++) {
+                    $(".infor_stu").append("<tr><td>" + data[j].userName + "</td>" +
+                        "<td>" + data[j].realName + "</td>" +
+                        "<td>" + data[j].address + "</td></tr>")
+                }
+            }
+        });
+
+        //获取课程信息
+        $.ajax({
+            url: 'Course/getCourseDetailByCourseId',
+            type: 'post',
+            dataType: "json",
+            data: {
+                courseId: courseId
+            },
+            success: function (data) {
+
+                if (data.code == -1) {
+                    $(".talist").css("height", "600px");
+                    $(".talist").append("<li style='position: relative;'><h3>没有相关课程信息, 请搜索其他课程！</h3></li>");
+                } else if (data.code == 1) {
+                    //课程图片信息
+                    $("#course_img").attr("src", data.data.course.imageUrl);
+                    $("#course_img").attr("alt", data.data.course.courseName);
+                    //课程名
+                    $("#course_name_h1").text(data.data.course.courseName);
+                    $("#description_li").text(data.data.course.description);
+                }
+            }
+        });
+    }
+
+    function timetrans(date) {
+        var date = new Date(date);//如果date为13位不需要乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+        var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+        var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        return Y + M + D;
+    }
+
+    function getWordCnt(arr) {
+        var obj = {};
+        for (var i = 0, l = arr.length; i < l; i++) {
+            var item = arr[i];
+            obj[item] = (obj[item] + 1) || 1;
+        }
+        return obj;
+    }
+
+
+    //获取学生选课信息的加入时间
+    $.ajax({
+        type: 'post',
+        url: 'Course/getSelectCourseByCourseID',
+        data: {
+            courseId: courseId
+        },
+        dataType: "json",
+        success: function (data) {
+            if (data.length == 0) {
+                // $(".talist").css("height", "600px");
+                // $(".talist").append("<li style='position: relative;'><h3>没有相关课程信息, 请搜索其他课程！</h3></li>");
+                alert("暂无学习者加入该课程！");
+            } else {
+                var xData = [];
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    var date = new Date(data[i].joinTime);
+                    var joinTime = timetrans(date);
+                    xData.push(joinTime);
+                }
+                xData.sort();
+                var countXData = getWordCnt(xData);
+                var xDataResult = [];
+                var yDataResult = [];
+                console.log(countXData);
+                for (var key in countXData) {
+                    xDataResult.push(key);
+                    yDataResult.push(countXData[key]);
+                }
+                var dataArray = {
+                    xDataResult: xDataResult,
+                    yDataResult: yDataResult
+                };
+                storage.removeItem("dataArray");
+                storage.setItem("dataArray", JSON.stringify(dataArray));
+            }
+        },
+        error: function (data) {
+            alert("出现异常，异常原因【" + data + "】!");
+        }
+    });
+
+    var dataArray = storage["dataArray"];
+    var dataResult = JSON.parse(dataArray);
+    var xDataResult = dataResult.xDataResult;
+    var yDataResult = dataResult.yDataResult;
+    console.log("xDataResult " + xDataResult);
+    console.log("yDataResult " + yDataResult);
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '学习者加入课程展示图'
+        },
+        tooltip: {},
+        legend: {
+            data: ['人数']
+        },
+        xAxis: {
+            data: xDataResult
+        },
+        yAxis: {},
+        series: [{
+            name: '人数',
+            type: 'line',
+            data: yDataResult
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</html>

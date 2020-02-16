@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <title>每日一课</title>
+
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="js/style.js" type="text/javascript"></script>
+    <link href="css/global_channel.css" type="text/css" rel="stylesheet"/>
+    <link href="css/channel_course_afree.css" type="text/css" rel="stylesheet"/>
+    <script src="js/channel_course_afree.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<!--导入top.html-->
+<div id="top"></div>
+<script>
+    $("#top").load("top.html");
+</script>
+
+<!--每日一课-->
+<div class="free_main">
+    <!--当前位置-->
+    <div class="Current">
+        <span class="s1">当前位置：&nbsp;每日一课</span>
+    </div>
+    <div class="clear"></div>
+    <!--今日学习-->
+    <div class="big_main">
+        <ul>
+            <li class="img_info"></li>
+        </ul>
+        <h2 class="courseName"></h2>
+        <dl>
+            <!--<dd class="time">-->
+            <!--<span class="s3">学习人数：<a id="studyNumber" class="studyNumber" title=""></a></span>-->
+            <!--</dd>-->
+            <dd class="info"></dd>
+            <dd class="bottom">
+						<span class="s4"> 
+							<a href="#" title="" target="_self" rel="nofollow">
+								<img height="100" widht="100" onerror="this.src='images/404.jpg'" alt=""
+                                     src="" class="teacher_info_img"/>
+							</a>
+						</span>
+                <span class="s5">
+							<a href="#" title="" target='_self' rel="nofollow" class="teacher_name_a"></a>
+						</span>
+                <span class="s6">
+							<a title="立即学习" target="_self" class="clickToStudy">立即学习</a>
+						</span>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--导入footer.html-->
+<div id="footer" style="width: 100%; margin-top: 50px;"></div>
+<script>
+    $("#footer").load("footer.html");
+</script>
+</body>
+
+<script>
+    var storage = window.sessionStorage;
+    var userdata = JSON.parse(storage["userdata"]);
+    if ($.isEmptyObject(userdata)) {
+        console.log("数据为空");
+    }
+    //获取推荐课程信息
+    $.ajax({
+        type: 'post',
+        url: 'student/getRecommendCourseByUserId',
+        data: {
+            userId: userdata.userId
+        },
+        dataType: "json",
+        success: function (data) {
+            if (data.length == 0) {
+                // $(".talist").css("height", "600px");
+                // $(".talist").append("<li style='position: relative;'><h3>没有相关课程信息, 请搜索其他课程！</h3></li>");
+                alert("暂无");
+            } else {
+                //展示课程信息
+                $(".info").text(data[0].description);
+                $(".courseName").append("<a target=\"_self\" href='course_detail.html?courseId=" + data[0].courseId + "' title= " + data[0].courseName + " target='_blank'>" + data[0].courseName + "</a>")
+                $(".img_info").append("<a target=\"_self\" href='course_detail.html?courseId=" + data[0].courseId + "' title= " + data[0].courseName + " target='_blank' class='big_img'>" + "<img src=" + data[0].imageUrl + " alt=" + data[0].courseName + " /></a>")
+                $(".clickToStudy").attr("href", "course_detail.html?courseId=" + data[0].courseId);
+                var dayCourseData = {
+                    courseId: data[0].courseId
+                };
+                storage.setItem("dayCourseData", JSON.stringify(dayCourseData));
+            }
+        },
+        error: function (data) {
+            alert("出现异常，异常原因【" + data + "】!");
+        }
+    });
+
+    var dayCourseData = JSON.parse(storage["dayCourseData"]);
+    if ($.isEmptyObject(dayCourseData)) {
+        alert("数据为空");
+    } else {
+        $.ajax({
+            type: 'post',
+            url: 'Course/getCourseDetailByCourseId',
+            data: {
+                courseId: dayCourseData.courseId
+            },
+            dataType: "json",
+            success: function (data) {
+                //教师信息
+                $(".teacher_name_a").attr("title", data.data.user.realName);
+                $(".teacher_name_a").text(data.data.user.realName);
+
+                $(".teacher_info_img").attr("alt", data.data.user.realName);
+                $(".teacher_info_img").attr("src", data.data.user.imageUrl);
+            },
+            error: function (data) {
+                alert("出现异常，异常原因【" + data + "】!");
+            }
+        });
+    }
+</script>
+
+</html>

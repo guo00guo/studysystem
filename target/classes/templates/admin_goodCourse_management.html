@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>首页精品课程管理-查看</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="/css/x-admin.css" th:href="@{/css/x-admin.css}" media="all"/>
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"
+          rel="stylesheet">
+</head>
+
+<body>
+<div class="x-nav">
+			<span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>首页精品课程管理</cite></a>
+            </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.reload(false);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <xblock>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
+        <!--th:onclick="'javascript:course_add(\'添加精品课程\',\'/toAddGoodCoursePage\',\'\',\'510\');'"-->
+        <a th:href="@{/toAddGoodCoursePage}"><button class="layui-btn"><i class="layui-icon"/>&#xe608;</i>添加</button></a>
+
+        <span class="x-right" style="line-height:25px">共有数据：<th th:text="${count}"></th> 条</span>
+    </xblock>
+
+    <input type="hidden" name="idss" id="idss"/>
+    <form id="Form" action="" method="post">
+        <input name="_method" type="hidden" value="delete"/>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th width="5%"><input type="checkbox" id="ckBoxAll" onclick="checkAll()"/></th>
+                <th width="5%">精品课程编号</th>
+                <th width="5%">课程编号</th>
+                <th width="8%">课程名</th>
+                <th width="10%">图片</th>
+                <th width="10%">操作</th>
+            </tr>
+            </thead>
+            <tbody id="x-img">
+            <tr th:each="goodCourse:${goodCourses}">
+                <td><input type="checkbox" th:value="${goodCourse.goodCourseId}" name="ids"/></td>
+                <td name="goodCourseId" th:text="${goodCourse.goodCourseId}"></td>
+                <td name="courseId" th:text="${goodCourse.courseId}"></td>
+                <td name="courseName" th:text="${goodCourse.courseName}"></td>
+                <td name="imageUrl" align="left"><img th:src="'/'+${goodCourse.imageUrl}" alt="" width="56"
+                                                      height="56"/></td>
+                <td class="td-manage">
+                    <a title="删除" href="javascript:;" th:value="${goodCourse.goodCourseId}"
+                       class="btn btn-sm btn-danger" style="text-decoration:none" onclick="banner_del($(this))">删除
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<br/><br/><br/>
+<script src="/lib/layui/layui.js" th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+<script src="/js/x-layui.js" th:src="@{/js/x-layui.js}"></script>
+<script>
+
+    layui.use(['laydate','element','laypage','layer'], function(){
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+        layer.ready(function(){ //为了layer.ext.js加载完毕再执行
+            layer.photos({
+                photos: '#x-img'
+                //,shift: 5 //0-6的选择，指定弹出图片动画类型，默认随机
+            });
+        });
+
+    });
+
+
+    //全选或全不选
+    function checkAll() {
+        var flag = document.getElementById("ckBoxAll").checked;
+        var ids = document.getElementsByName("ids");
+        for (var i = 0; i < ids.length; i++) {
+            ids[i].checked = flag;
+        }
+    }
+    //批量删除
+    function delAll() {
+        var ids = document.getElementsByName("ids");
+        var idss = document.getElementById("idss");
+        var str = "";
+        for (var i = 0; i < ids.length; i++) {
+            if (ids[i].checked == true) {
+                str += ids[i].value + "_";
+            }
+        }
+        str = str.substring(0, str.length - 1);
+        if (str != '') {
+            idss.value = str;
+            layer.confirm('确认要删除吗？', function del() {
+                layer.msg('删除成功', {icon: 1, time: 1000});
+                var form = document.getElementById("Form");
+                form.action = "/deleteAllGoodCourse/" + str;
+                form.submit();//相当于点击submit按钮
+            });
+
+        } else {
+            layer.alert("请选择信息进行批量删除！");
+        }
+    }
+
+    /*单个删除*/
+    function banner_del(obj) {
+//        alert("id:" + id);
+        var id = obj.attr("value");
+        layer.confirm('确认要删除吗？', function () {
+            //发异步删除数据
+            var form = document.getElementById("Form");
+            form.action = "/deleteAllGoodCourse/" + id;
+            form.submit();//相当于点击submit按钮
+            layer.msg('已删除!', {icon: 1, time: 1000});
+        });
+    }
+
+    /*添加*/
+    function course_add(title, url,w, h) {
+        x_admin_show_add(title, url,w, h);
+    }
+
+    function x_admin_show_add(title, url,w, h) {
+        if (title == null || title == '') {
+            title = false;
+        }
+        ;
+        if (url == null || url == '') {
+            url = "404.html";
+        }
+        ;
+        if (w == null || w == '') {
+            w = 700;
+        }
+        ;
+        if (h == null || h == '') {
+            h = ($(window).height() - 50);
+        }
+        ;
+        layer.open({
+            type: 2,
+            area: [w + 'px', h + 'px'],
+            fix: false, //不固定
+            maxmin: true,
+            shadeClose: true,
+            shade: 0.4,
+            title: title,
+            content: url
+        });
+    }
+
+    /*关闭弹出框口*/
+    function x_admin_close() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

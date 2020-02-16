@@ -1,0 +1,84 @@
+﻿@import url(../fonts/global_pager.css);
+
+@charset "utf-8";
+/* CSS Document */
+
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0; padding:0}
+body{ background:#f2f2f2; font:12px tahoma,"\5b8b\4f53",arial; color:#333; }
+a{color:#333333;text-decoration:none}
+a:hover{color:#09F;}
+em{font-style:normal}
+ul,li{list-style:none}
+img{border:0;vertical-align:middle;}
+.font_yahei {font-family:microsoft yahei;}
+
+.fl{ float:left;}
+.fr{ float:right;}
+.hr10,.hr20 {clear:both;margin:0;padding:0;font-size:0;overflow:hidden;}
+.hr20 {height:20px;}
+.hr15 {height:15px;}
+.hr10 {height:10px;}
+.hr40 {height:40px;}
+.clear {clear:both; height:0px;margin:0;padding:0;font-size:0;overflow:hidden;}
+.d_n{ display:none}
+.d_b{ display:block}
+.ytArea,.banner,.minTopin,.headerIn { width:1002px;   margin:0 auto; position:relative;}
+
+i{ display:inline-block; background:url(../images/all_img.jpg) no-repeat; vertical-align:middle;}
+
+
+			 
+    /*�ʰ�ר��*/
+
+.global_nav .nav_list .more_cat {
+    width: 111px;
+    position: absolute;
+    background: #fff;
+    left: -16px;
+    top: 82px;
+    background: #3f88ca;
+    z-index: 9;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.4) 0 0 5px;
+    display: none;
+    padding:10px 0;
+}
+    .global_nav .nav_list .more_cat .ic {
+        border-width: 8px;
+        border-color: transparent transparent #3f88ca transparent;
+        border-style: dashed dashed solid dashed;
+        position: absolute;
+        left: 50%;
+        margin-left:-4px;
+        top: -25px;
+        z-index: 15;
+        display: inline-block;
+    }
+.global_nav .nav_list .mc_02 {
+    left:-17px;
+}
+.global_nav .nav_list .mc_03 {
+    left:-24px;
+}
+    .global_nav .nav_list .more_cat li {
+        height:30px;
+    text-align:center;
+    margin:0;
+    width:100%;
+
+    }
+        .global_nav .nav_list .more_cat li a {
+            line-height: 30px;
+            display: block;
+            font-size: 14px;
+            color: #fff;
+        }
+            .global_nav .nav_list .more_cat li a:hover {
+                text-decoration:underline;
+            }
+
+
+
+
+.global_nav .my_class {
+margin-right:15px;}

@@ -1,0 +1,116 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+
+
+.btm_div {
+    min-height: 60px;
+    line-height: 60px;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,.8);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.8);
+    box-shadow: 0 0 5px rgba(0,0,0,.8);
+    _position: absolute;
+    background: rgba(0,0,0,.85);
+    /* For IE 8 */
+    -ms-filter: alpha(opacity=80) progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#000');
+    /* For IE 5.5 - 7 */
+    filter: alpha(opacity=80) progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#000');
+    *background: #000;
+    left:0;
+    right:0;
+}
+
+.w_box {
+    max-width:1180px;
+    margin:0 auto;
+}
+    .w_box .s0 {
+        color:#fff;
+        width:115px;
+        text-align:center;
+        border-right:1px solid #888888;
+        height:30px;
+        display:inline-block;
+        float:left;
+        font-size:14px;
+        line-height:16px;
+        vertical-align:middle;
+        margin-right:30px;
+        margin-top:15px;
+    }
+        .w_box .s0 strong {
+            display:block;
+            color:#888888;
+            font-size:12px;
+            line-height:14px;
+            margin-top:4px;
+        }
+.w_box .s1 {
+    float: left;
+    font-size: 30px;
+    color: #fff;
+    
+}
+    .w_box .buy {
+        width:150px;
+        height:40px;
+        line-height:40px;
+        font-size:24px;
+        text-align:center;
+        display:inline-block;
+        background:#d50515;
+        float:right;
+        color:#fff;
+        margin:10px 0;
+    }
+    .w_box .s2 {
+        font-size:40px;
+        line-height:40px;
+        color:#fcff00;
+        display:inline-block;
+        margin:10px 22px;
+        float:right;
+        vertical-align:middle;
+    }
+        .w_box .s2 i {
+            font-size:30px;
+            font-style:normal;
+            margin-right:8px;
+            background:none;
+        }
+    .w_box .s3 {
+        font-size:18px;
+        line-height:18px;
+        color:#fff;
+        float:right;
+        margin-top:30px;
+    }
+    .w_box del {
+        text-decoration:line-through;
+    }
+
+
+
+
+
+.try_play {
+    position:absolute; left:50%; bottom:110px; margin-left:340px; font-size:20px; padding:10px 20px;  color:#fff;background:#8abf19;
+}
+.try_play_2 {
+    width:110px;
+    height:36px;
+    color:#fff;
+    font-size:18px;
+    background:#1cb177;
+    line-height:36px;
+    text-align:center;
+    border-bottom-right-radius:10px;
+    border-top-right-radius:10px;
+    position:absolute; left:50%; 
+    margin-left:220px;
+    display:inline-block;
+}

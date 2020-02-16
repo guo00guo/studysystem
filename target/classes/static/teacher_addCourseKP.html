@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>待开课程章节编辑</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <link rel="stylesheet" href="css/x-admin.css" media="all">
+    <script src="js/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+<div class="x-body">
+    <form class="layui-form" lay-filter="courseUnitFilter">
+        <div class="layui-form-item">
+            <label for="link" class="layui-form-label">
+                <span class="x-red">*</span>课程章节
+            </label>
+            <div class="layui-input-inline">
+                <select lay-verify="required" name="courseUnitId" id="courseUnitSelect" lay-filter="selectOne">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="link" class="layui-form-label">
+                <span class="x-red">*</span>课程知识点
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="link" name="courseKPName" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="link" class="layui-form-label">
+                <span class="x-red">*</span>知识点链接
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="link" name="courseKPLocation" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button class="layui-btn" lay-filter="add" lay-submit="">
+                完成
+            </button>
+        </div>
+    </form>
+</div>
+<script src="./lib/layui/layui.js" charset="utf-8"></script>
+<script src="./js/x-layui.js" charset="utf-8"></script>
+<script>
+    var vars = window.location.search.substring(1);
+    var arrayList = vars.split("&");
+
+    function getQueryVariable(variable) {
+        for (var i = 0; i < arrayList.length; i++) {
+            var pair = arrayList[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+
+    var courseId = getQueryVariable("courseId");
+    console.log("teacher_add_courseId " + courseId);
+
+    window.onload = function () {
+        layui.use('form', function () {
+            var form = layui.form();
+            $.ajax({
+                url: 'teacher/getCourseUnitByCourseId',
+                type: 'post',
+                dataType: "json",
+                data: {
+                    courseId: courseId
+                },
+                success: function (data) {
+                    $("#courseUnitSelect").children().remove();
+                    for (var i = 0; i < data.data.length; i++) {
+                        $("#courseUnitSelect").append("<option value=''></option>");
+                        $("#courseUnitSelect").append("<option value='" + data.data[i].courseUnitId + "'>" + data.data[i].courseUnitName + "</option>");
+                    }
+                    form.render();
+                }
+            });
+            form.render('select', 'courseUnitFilter');
+        });
+    };
+
+    layui.use(['form', 'layer', 'upload'], function () {
+        var form = layui.form();
+        var layer = layui.layer;
+
+        //监听提交
+        form.on('submit(add)', function (data) {
+            var userId;
+            if (!window.sessionStorage) {
+                alert("浏览器不支持sessionStorage");
+            } else {
+                var storage = window.sessionStorage;
+                var userdata = JSON.parse(storage["userdata"]);
+
+                if ($.isEmptyObject(userdata)) {
+                    console.log("数据为空！");
+                } else {
+                    userId = userdata.userId;
+                }
+            }
+            var fd = new FormData();
+            fd.append('courseUnitId', data.field.courseUnitId);
+            fd.append('courseKPName', data.field.courseKPName);
+            fd.append('courseKPLocation', data.field.courseKPLocation);
+            console.log(fd);
+            $.ajax({
+                type: 'post',
+                url: 'teacher/addCourseKP',
+                data: fd,
+                processData: false,  // 不处理数据
+                contentType: false,  // 不设置内容类型
+                enctype: 'multipart/form-data',
+                async: false,
+                success: function (data) {
+                    if (data.code == 1) {
+                        x_admin_close();
+                        parent.location.reload();
+                    } else if (data.code == -1) {
+                        layer.msg(
+                            '创建课程失败，请重试！',
+                            {
+                                btn: ['知道了'],
+                                icon: 2,
+                                time: false,
+                                btn1: function () {
+                                    x_admin_close();
+                                }
+                            }
+                        );
+                    } else {
+                        var storage = window.sessionStorage;
+                        storage.clear();
+                        alert("请登录！");
+                        window.location.href = "index.html";
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+
+        });
+    });
+
+    /*关闭弹出框口*/
+    function x_admin_close() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+
+</script>
+</body>
+
+</html>

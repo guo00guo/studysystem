@@ -1,0 +1,1 @@
+BizQQWPA.define("util.proxy",function(){return function(ns,fn){return function(){return fn.apply(ns,arguments)}}});

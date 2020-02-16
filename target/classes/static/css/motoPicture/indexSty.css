@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+.mr{margin-left:auto;margin-right:auto;}
+.lf{float:left;}
+.rf{float:right;}
+.leftBg,.rightBg{height:100%;position:fixed;}
+.leftBg{background:url(../images/leftBg.png) no-repeat 0 center;left:0;top:0;z-index:-2;width:73.6%;background-size:100% 100%;}
+.rightBg{background:url(../images/rightBg.png) no-repeat 0 center;right:0;top:0;z-index:-1;width:77.9%;background-size:100% 100%;}
+.con_lf,.con_rf{width:50%;}
+/**/
+.content{width:1024px;}
+.logo{padding-top:26px;padding-left:44px;}
+/*左边样式*/
+.big_word{padding-top:25px;padding-left:24px;}
+.btnCon{padding-top:114px;padding-left:60px;position:relative;width:341px;height:305px;}
+.btnbg{position:absolute;left:60px;top:114px;}
+.btnWord{position:absolute;top:214px;left:104px;}
+.btn_arow{position:absolute;top:157px;left:162px;}
+/*右边样式*/
+.big_word_rf{padding-right:20px;padding-top:147px;padding-bottom:92px;}
+.peoCon{position:relative;top:93px;right:6px;height:240px;width:414px;}
+.peo{position:absolute;top:0;left:0;}
+.work{position:absolute;top:80px;left:28px;}
+.peoBtn{ position:relative;}
+.btnWord_rf{position:absolute;top:67px;left:14px;}
+.btn_arow_rf{position:absolute;top:144px;left:94px;}
+
+.leftBg,.rightBg,.big_word img,.logo a img,.big_word_rf img,.btnWord,.btnbg,.house,.peo,.work,.btnbg_rf,.btnWord_rf,.btn_arow_rf,.btn_arow,.btnWord,.btn_arow_rf,.btnWord_rf{display:none;}
+

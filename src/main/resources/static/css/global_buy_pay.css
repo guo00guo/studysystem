@@ -1,0 +1,564 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+    background:#f1f2f7;
+}
+.buy_top {
+    background: #f0f0f0;
+    border-bottom: 1px solid #d1d1d1;
+    padding-top: 7px;
+    height: 12px;
+    line-height: 12px;
+    padding-bottom: 6px;
+}
+
+    .buy_top dl {
+        width: 1000px;
+        margin: 0 auto;
+        overflow:hidden;
+    }
+
+    .buy_top dt {
+        float: left;
+    }
+
+    .buy_top dd {
+        float: right;
+        padding: 0 22px;
+        margin-right:-1px;
+        border-right: 1px solid #bbbbbb;
+    }
+        .buy_top dd .a1 {
+            color:#0075de;
+        }
+.buy_state {
+    width:1000px;
+    margin:0 auto;
+    padding-top:36px;
+}
+.buy_state .buy_logo {
+    float:left;
+}
+.buy_state .state_1,.buy_state .state_2,.buy_state .state_3,.buy_state .state_4,.buy_state .state_5,.buy_state .state_6,.buy_state .state_7,.buy_state .state_8,.buy_state .state_9 {
+    float:right;
+    background:url(../images/state_1.jpg) no-repeat;
+    width:477px;
+    height:70px;
+    margin-right:25px;
+}
+.buy_state .state_2 {
+    background:url(../images/state_2.jpg) no-repeat;
+}
+.buy_state .state_3 {
+    background:url(../images/state_3.jpg) no-repeat;
+}
+.buy_state .state_4 {
+    background:url(../images/state_4.jpg) no-repeat right;
+}
+.buy_state .state_5 {
+    background:url(../images/state_5.jpg) no-repeat right;
+}
+.buy_state .state_6 {
+    background:url(../images/state_6.jpg) no-repeat right;
+}
+.buy_state .state_7 {
+    background:url(../images/state_7.jpg) no-repeat right;
+}
+.buy_state .state_8 {
+    background:url(../images/state_8.jpg) no-repeat right;
+}
+.buy_state .state_9 {
+    background:url(../images/state_9.jpg) no-repeat right;
+}
+.buy_box {
+    width:950px;
+    margin:0 auto;
+    margin-top:45px;
+    padding:0 25px;
+    padding-bottom:85px;
+    border-top:5px solid #d2d2d2;
+    background:#fff;
+}
+.buy_box .list_title{
+    margin-top:25px;
+    margin-left:35px;
+    font-size:16px;
+    color:#333333;
+    }
+    .buy_box .list_title span {
+        display:inline-block;
+        border-radius:5px;
+        width:5px;
+        height:20px;
+        vertical-align:middle;
+        background:#1cb177;
+        margin-right:10px;
+        margin-top:-2px;
+    }
+.sub_price ul{
+        border-bottom:1px solid #e5e5e5;
+        display:inline-block;
+        width:100%;
+    }
+    .buy_box .sub_price li {
+        float:right;
+        margin-top:25px;
+        line-height:30px;
+        color:#aaaaaa;
+        position:relative;
+        text-align:right;
+        margin-bottom:15px;
+    }
+    .buy_box .sub_price dl a {
+        display:inline-block;
+        height:12px;
+        line-height:12px;
+        vertical-align:middle;
+        overflow:hidden;
+    }
+    .buy_box .sub_price .a1 {
+        color:#288ce6;
+        margin-left:20px;
+        padding-left:24px;
+        background:url(../images/otherpay_ioc.jpg) no-repeat left;
+        background-position:0 0;
+    }
+        .buy_box .sub_price .a1:hover {
+            background-position:0 -12px;
+            color:#cc9963;
+        }
+
+        .buy_box .sub_price .s1 {
+            font-size:30px;
+            color:#c40000;
+            margin-left:10px;
+        }
+        .buy_box .sub_price .s2 {
+            color:#333333;
+            margin-left:5px;
+        }
+    .buy_box .sub_price .s3 {
+        color:#ff6600;
+    }
+    .buy_box .sub_price .s4 {
+        position:absolute;
+        right:2px;
+        bottom:5px;
+        width:600px;
+    }
+    .buy_box .sub_price .s5 {
+        color:#333;
+    }
+.buy_box .sub_price .s6 {
+    margin-right:25px;
+}
+    .buy_box .sub_price .s6 del {
+        margin-left:5px;
+    }
+    .buy_box .sub_price dl {
+        float:right;
+        margin-top:30px;
+        width:100%;
+        text-align:right;
+    }
+
+    .buy_box .sub_price dd {
+        float:right;
+        margin-left:25px;
+        line-height:40px;
+        height:40px;
+    }
+
+    .buy_box .sub_price .c1 {
+        color:#288ce6;
+    }
+    .buy_box .sub_price dd input {
+        vertical-align:middle;
+        margin-top:-2px;
+        margin-right:8px;
+    }
+    .buy_box .sub_price .settlement {
+        width:200px;
+        height:40px;
+        color:#fff;
+        background:#005db1;
+        margin-left:25px;
+        display:inline-block;
+        font-size:20px;
+        line-height:40px;
+        text-align:center;
+    }
+        .buy_box .sub_price .settlement:hover {
+            background: #007ae8;
+        }
+    .buy_box .sub_price .gotopay {
+        background:#c40000;
+    }
+    .buy_box .sub_price .gotopay:hover {
+        background:#ff0000;
+    }
+    .buy_box .sub_price .inp_c {
+        vertical-align:middle;
+        margin-top:-2px;
+        margin-right:5px;
+    }
+    .buy_box .sub_price .ponit,.buy_box .sub_price .phone {
+        width:120px;
+        border:1px solid #e5e5e5;
+        height:23px;
+        line-height:23px;
+        font-size:12px;
+        margin-left:11px;
+    }
+.buy_foot {
+    width:1000px;
+    margin:0 auto;
+    margin-bottom:35px;
+    color:#888888;
+    text-align:center;
+}
+    .buy_foot ul {
+        margin:40px 0 20px 0;
+    }
+    .buy_foot ul a {
+        margin:0 17px;
+    }
+    .buy_foot p {
+        line-height: 22px;
+    }
+    .buy_foot a {
+        color:#888888;
+    }
+
+
+
+
+    /*支付选择*/
+
+            .c_list {
+            color:#333;
+        }
+            .c_list .tr1 {
+                height:25px;background:#f1f2f7; color:#aaaaaa;
+            }
+            .c_list .tr2 {
+                height:51px;
+            }
+            .c_list td {
+                border-bottom:1px solid #f1f2f7;
+            }
+                .c_list td del {
+                    color:#aaaaaa;
+                }
+
+
+.order_info {
+    border-top:3px solid #288ce6;
+}
+    .order_info span {
+        display:inline-block;
+        float:left;
+        line-height:60px;
+        overflow:hidden;
+    }
+    .order_info .s1 {
+        width:88px;
+        height:60px;
+        border-right:1px solid #e5e5e5;
+        border-bottom:1px solid #e5e5e5;
+    }
+    .order_info .s2 {
+        width:840px;
+        padding-left:20px;
+        border-bottom:1px solid #e5e5e5;
+        font-size:14px;
+    }
+    .order_info .s3 {
+        width:87px;
+        height:60px;
+        border-right:1px solid #e5e5e5;
+        border-bottom:1px solid #e5e5e5;
+    }
+    .order_info .s4 {
+        width:294px;
+        height:60px;
+        color: #c40000;
+        font-weight:bold;
+        font-size:14px;
+        padding-left:20px;
+        border-bottom:1px solid #e5e5e5;
+    }
+    .order_info .s5 {
+        width:88px;
+        height:87px;
+        border-right:1px solid #e5e5e5;
+        border-bottom:1px solid #e5e5e5;
+    }
+    .order_info .s6 {
+        padding:0 20px;
+        height:72px;
+        width:820px;
+        font-size:14px;
+        line-height:30px;
+        padding-top:15px;
+        border-bottom:1px solid #e5e5e5;
+    }
+    .order_info .s7 {
+        width:88px;
+        height:230px;
+        border-right:1px solid #e5e5e5;
+        border-bottom:1px solid #e5e5e5;
+    }
+    .order_info .check_div {
+        width:844px;
+        height:230px;
+        padding-left:16px;
+        border-bottom:1px solid #e5e5e5;
+        display:inline-block;
+        float:left;
+        line-height:60px;
+        overflow:hidden;
+    }
+        .order_info .check_div ul {
+            width:842px;
+            display:inline-block;
+            margin-top:22px;
+        }
+        .order_info .check_div li {
+            width:368px;
+            float:left;
+            font-size:14px;
+            padding-left:54px;
+            margin-bottom:-1px;
+            height:62px;
+            overflow:hidden;
+            position:relative;
+            margin-left:-2px;
+            z-index:5;
+            background:url(../images/buy_check.jpg) left top no-repeat;
+            cursor:pointer;
+        }
+            .order_info .check_div li.now {
+            background:url(../images/buy_check_now.jpg) left top no-repeat;
+            border:none;
+            z-index:9;
+            }
+            .order_info .check_div li img {
+                float:right;
+                margin-right:34px;
+                margin-top:14px;
+            }
+        .order_info .check_div dl {
+            float:right;
+            color:#288ce6;
+            cursor:pointer;
+            margin-right:32px;
+            line-height:12px;
+            margin-top:21px;
+        }
+            .order_info .check_div dl img {
+                margin-right:8px;
+                vertical-align:middle;
+                margin-top:-2px;
+            }
+    .order_info .pay_tips_01, .order_info .pay_tips_02 {
+        background: #738fcb;
+        font-size: 12px;
+        padding: 5px 4px 4px 4px;
+        margin-left: 10px;
+        color:#fff;
+        height:auto;
+        line-height:12px;
+        vertical-align:middle;
+        margin-top:-2px;
+        border-radius:3px;
+        float:none;
+    }
+    .order_info .pay_tips_02 {
+        background:#ff6600;
+    }
+    .order_info .s1,.order_info .s3,.order_info .s5,.order_info .s7 {
+        text-align:center;
+        color:#aaaaaa;
+    }
+    .order_info .s1 {
+    }
+
+
+
+.bank_select_btn {
+    display:block;
+    background:#288ce6;
+    width:200px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    color:#fff;
+    margin:0 auto;
+    font-size:20px;
+    margin-top:40px;
+    }
+    .bank_select_btn:hover {
+        color:#fff;
+        background:#4ea3f0;
+    }
+
+
+
+
+    /*银行列表弹窗*/
+
+.bank_list {
+    background:#fff;
+    width:820px;
+    height:300px;
+    display:none;
+}
+.bank_title {
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 6px;
+    padding: 34px 0 0 43px;
+}
+    .bank_title span {
+        width:5px; 
+        height:20px;
+        display:inline-block;
+        border-radius:3px;
+        vertical-align:middle;
+        margin-top:-2px;
+        background:#1cb177;
+        margin-right:10px;
+    }
+.bank_list ul {
+    padding-left:43px;
+}
+.bank_list li{
+    float:left;
+    width:190px;
+    margin-top:24px;
+   
+}
+    .bank_list li img {
+        border: 1px solid #dddddd;
+        float:left;
+    }
+    .bank_list li input {
+        float:left;
+        margin-right:6px;
+        margin-top:10px;
+    }
+    .bank_list li label {
+        cursor:pointer;
+    }
+
+    /*协议*/
+
+.protocol {
+    width:570px;
+    padding:15px;
+    font-size:14px;
+    line-height:24px;
+    color:#333;
+    display:none;
+}
+    .protocol .p1 {
+        text-align:center;
+        font-size:30px;
+        margin:20px 0;
+    }
+.protocol a {
+width: 322px;
+height: 34px;
+line-height:34px;
+display:inline-block;
+background: #e4393c;
+color: #FFF;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+font-family: "微软雅黑";
+font-size: 16px;
+font-weight: 800;
+}
+
+
+    /*弹窗*/
+.pay_window{
+		width:360px;
+        height:180px;
+        background:#ffffff;
+		-webkit-box-shadow:0 0px 5px rgba(0,0,0,.3);
+		box-shadow:0 0px 5px rgba(0,0,0,.3);
+    }
+
+
+.pay_window .window_tit {
+	height:40px; line-height:40px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#eee,endColorstr=#ccc)";
+    color: #333333;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+}
+.pay_window .window_main {
+	padding:22px 25px;
+	padding-right:0px;
+	line-height:24px;
+	color:#333;
+}
+.pay_window .window_main span {
+	display:block;
+	font-weight:bold;
+}
+.pay_window .window_main .icon {
+	display:block;
+	width:16px; height:16px; line-height:17px;
+	float:left;
+	background:url(../images/entry_icon.png) no-repeat 0px -120px;
+	margin:5px 3px 0px 0px;
+}
+
+
+.windown_btnBox .btn_sty_yellow {
+	height:32px;
+	width:100px;
+	margin-right:10px;
+    margin-top:20px;
+}
+.windown_btnBox .btn_sty_blue {
+	height:32px;
+	width:112px;
+	margin-right:10px;
+    margin-top:20px;
+}
+.btn_sty_yellow {
+	color:white;
+	border:none;
+	cursor:pointer;
+	font-weight:bold;
+	background:#ffb400;
+	
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.btn_sty_yellow:hover {
+	background:#ffbd1d;
+}
+
+.btn_sty_blue {
+	color:white;
+	border:none;
+	cursor:pointer;
+	font-weight:bold;
+	background:#319af4;
+	
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.btn_sty_blue:hover {
+	background:#48a7ff;
+}

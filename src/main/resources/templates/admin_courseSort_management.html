@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>
+        课程分类管理-查看
+    </title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/x-admin.css" th:href="@{/css/x-admin.css}" media="all"/>
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"
+          rel="stylesheet">
+</head>
+<style>
+    input {
+        width: 25px;
+    }
+</style>
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>课程分类管理</cite></a>
+            </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon"
+                                                                        style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <form class="layui-form x-center" action="" style="width:500px">
+        <div class="layui-form-pane">
+            <div class="layui-form-item">
+                <div class="layui-input-inline">
+                    <input type="text" id="serachContent" th:value="${queryName}=='null'?'':${queryName}" name="courseName"
+                           placeholder="搜索课程一级分类"
+                           onkeyup="ajaxSearch(this.value)" style="width:400px;"
+                           autocomplete="off" class="layui-input"/>
+                </div>
+                <div class="layui-input-inline" style="width:80px">
+                    <button class="layui-btn" onclick="btnSearch()"><i class="layui-icon">&#xe615;</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <xblock id="xblock">
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
+        <a class="layui-btn" th:href="@{/toAddCourseSortOnePage/}+${queryName}+'/' +${currentPage}"><i class="layui-icon">&#xe608;</i>添加</a>
+        <!--<span id="xblock_span" class="x-right" style="line-height:25px;">共<input id="count" th:value="${totalCount}"-->
+                                                                                 <!--th:readonly="readonly"></input> 条数据-->
+                                                       <!--&nbsp;&nbsp; 当前<input id="currentCount"-->
+                                                                             <!--th:value="${currentCount}"-->
+                                                                             <!--th:readonly="readonly"></input> 条</span>-->
+
+        <span id="xblock_span" class="x-right" style="line-height:25px;">共<th th:text="${totalCount}"></th>条数据&nbsp;&nbsp; 当前<th th:text="${currentCount}"></th>条</span>
+
+    </xblock>
+
+    <input type="hidden" name="idss" id="idss"/>
+    <form id="Form" action="" method="post">
+        <input name="_method" type="hidden" value="delete"/>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th width="5%"><input type="checkbox" id="ckBoxAll" name="ckBoxAll" onclick="checkAll()"/></th>
+                <th width="5%">一级分类编号</th>
+                <th width="10%">一级分类名</th>
+                <th width="10%">操作</th>
+            </tr>
+            </thead>
+            <tbody id="x-img"  class="restTable">
+            <tr th:each="courseSortOne:${courseSortOnes}">
+                <td><input type="checkbox" th:value="${courseSortOne.courseSortOneId}" name="ids"/></td>
+                <td th:text="${courseSortOne.courseSortOneId}"></td>
+                <td th:text="${courseSortOne.courseSortOneName}"></td>
+                <td class="td-manage">
+                    <!--th:onclick="'javascript:course_edit(\'修改\',\'/toEditCourseSortPage/\','+${courseSortOne.courseSortOneId}+','+${queryName}+','+${currentPage}+',\'\',\'500\');'"-->
+                    <a title="修改" href="javascript:;"
+                       th:href="@{/toEditCourseSortPage/} + ${courseSortOne.courseSortOneId} + '/' + ${queryName}+'/' +${currentPage}"
+                       class="btn btn-sm btn-primary" style="text-decoration:none">修改
+                    </a>
+                    <a title="删除" href="javascript:;" th:value="${courseSortOne.courseSortOneId}"
+                       class="btn btn-sm btn-danger" style="text-decoration:none" onclick="banner_del($(this))">删除
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="pagination" style="margin: 0 auto;text-decoration: none;">
+        <ul style="text-align: center; margin: 0 auto;text-decoration: none;">
+            <li class="nextPage" style=" float: left;"><a id="prePage" th:href="${currentPage}<=1?@{/adminGetAllCourseSortOne/}+${queryName}+'/1':@{/adminGetAllCourseSortOne/}+${queryName}+'/'+(${currentPage}-1)"/>&lt;&lt;上一页
+            </li>
+            <li style=" float: left;margin-left: 40px;">第<span><th th:text="${currentPage}"></th></span>页/共<span><th th:text="${totalPage}"></th></span>页
+            </li>
+            <li class="nextPage" style=" float: left;margin-left: 40px;"><a id="nextPage" th:href="${currentPage}>=${totalPage}?@{/adminGetAllCourseSortOne/}+${queryName}+'/'+${totalPage}:@{/adminGetAllCourseSortOne/}+${queryName}+'/'+(${currentPage}+1)"/>下一页&gt;&gt;
+            </li>
+        </ul>
+    </div>
+</div>
+<br/><br/><br/>
+<script src="/lib/layui/layui.js" th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+<script src="/js/x-layui.js" th:src="@{/js/x-layui.js}"></script>
+<script>
+    //全选或全不选
+    function checkAll() {
+        var flag = document.getElementById("ckBoxAll").checked;
+        var ids = document.getElementsByName("ids");
+        for (var i = 0; i < ids.length; i++) {
+            ids[i].checked = flag;
+        }
+    }
+
+    //批量删除
+    function delAll() {
+        var ids = document.getElementsByName("ids");
+        var idss = document.getElementById("idss");
+        var str = "";
+        for (var i = 0; i < ids.length; i++) {
+            if (ids[i].checked == true) {
+                str += ids[i].value + "_";
+            }
+        }
+        str = str.substring(0, str.length - 1);
+        if (str != '') {
+            idss.value = str;
+            layer.confirm('确认要删除吗？', function del() {
+                layer.msg('删除成功', {icon: 1, time: 1000});
+                var form = document.getElementById("Form");
+                form.action = "/deleteAllCourseSortOne/" + str;
+                form.submit();//相当于点击submit按钮
+            });
+
+        } else {
+            layer.alert("请选择信息进行批量删除！");
+        }
+    }
+
+    /*单个删除*/
+    function banner_del(obj) {
+//        alert("id:" + id);
+        var id = obj.attr("value");
+        layer.confirm('确认要删除吗？', function () {
+            //发异步删除数据
+            var form = document.getElementById("Form");
+            form.action = "/deleteAllCourseSortOne/" + id;
+            form.submit();//相当于点击submit按钮
+            layer.msg('已删除!', {icon: 1, time: 1000});
+        });
+    }
+
+    function btnSearch() {
+        var query = $("#serachContent").val();
+        alert(query);
+        ajaxSearch(query);
+    }
+
+    //ajax搜索课程一级分类
+    function ajaxSearch(query) {
+        if (query == '') {
+            query = 'findAllCourseSortOne';
+        }
+        $.ajax({
+            type: 'GET',
+            url: "/ajaxSerachCourseSortOne/" + query+"/1",
+            success: function (data) {
+                //修改总数
+                $("#count").attr("value", data.count);
+                $("#currentCount").attr("value", data.currentCount);
+                //修改当前页和总页数
+                $("#currentPage").attr("value", data.currentPage);
+                $("#totalPage").attr("value", data.totalPage);
+
+                //修改下一页、上一页的路径
+                var queryName = data.topSerachName;
+
+                if(data.currentPage == 0){
+                    $("#prePage").attr("href", "/adminGetAllCourseSortOne/"+String(queryName)+'/1');
+                }else{
+                    if(data.currentPage<=1){
+                        $("#prePage").attr("href", "/adminGetAllCourseSortOne/"+String(queryName)+'/1');
+                    }else{
+                        $("#prePage").attr("href", "/adminGetAllCourseSortOne/"+String(queryName)+'/'+(data.currentPage-1));
+                    }
+                }
+                if(data.currentPage == 0){
+                    alert(' currentPage = 0');
+                    $("#nextPage").attr("href", "/adminGetAllCourseSortOne/"+String(queryName)+'/1');
+                }else{
+                    if(data.currentPage>=data.totalPage){
+                        $("#nextPage").attr("href", "/adminGetAllCourseSortOne/"+String(queryName)+'/'+data.totalPage);
+                    }else{
+                        $("#nextPage").attr("href", "/adminGetAllCourseSortOne/"+String(queryName)+'/'+(data.currentPage+1));
+                    }
+                }
+                $(".restTable").html("");
+                var findTopSearch = '';
+                //循环出结果
+                for (var i = 0; i < data.courseSortOneList.length; i++) {
+                    findTopSearch += '<tr>' +
+                        '<td><input type="checkbox"  name="ids" th:value="${courseSortOne.courseSortOneId}"/></td>' +
+                        '<td name="courseSortOneId">' + data.courseSortOneList[i].courseSortOneId + '</td>' +
+                        '<td name="courseSortOneName">' + data.courseSortOneList[i].courseSortOneName + '</td>' +
+                        '<td class="td-manage">' +
+                        '<a title="修改" class="btn btn-sm btn-primary" href="/toEditCourseSortPage/' + data.courseSortOneList[i].courseSortOneId + '/' + data.topSerachName+'/' +data.currentPage + '" style="text-decoration:none">' +
+                        '修改' + '</a>' +
+                        '<a title="删除" class="btn btn-sm btn-danger" href="javascript:;" value="' + data.courseSortOneList[i].courseSortOneId + '"   style="text-decoration:none; margin-left: 5px;" onclick="banner_del($(this))">' +
+                        '删除' + '</a></td></tr>'
+                }
+                $("#count").attr('value', data.length);
+                $(".restTable").append(findTopSearch);
+            }
+        })
+    }
+
+    layui.use(['laydate', 'element', 'laypage', 'layer'], function () {
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+        layer.ready(function () { //为了layer.ext.js加载完毕再执行
+            layer.photos({
+                photos: '#x-img'
+                //,shift: 5 //0-6的选择，指定弹出图片动画类型，默认随机
+            });
+        });
+
+    });
+
+    /*添加*/
+    function course_add(title, url, id, w, h) {
+        x_admin_show_add(title, url, id, w, h);
+    }
+    // 编辑
+    function course_edit(title, url, id, queryName, currentPage, w, h) {
+//                alert(url);
+        x_admin_show(title, url, id, queryName, currentPage, w, h);
+    }
+
+    function x_admin_show(title, url, id, queryName, currentPage, w, h) {
+        if (title == null || title == '') {
+            title = false;
+        }
+        ;
+        if (url == null || url == '') {
+            url = "404.html";
+        }
+        ;
+        if (w == null || w == '') {
+            w = 800;
+        }
+        ;
+        if (h == null || h == '') {
+            h = ($(window).height() - 50);
+        }
+        ;
+        layer.open({
+            type: 2,
+            area: [w + 'px', h + 'px'],
+            fix: false, //不固定
+            maxmin: true,
+            shadeClose: true,
+            shade: 0.4,
+            title: title,
+            content: url + id + '/' + queryName + '/' + 1
+        });
+    }
+
+    function x_admin_show_add(title, url, id, w, h) {
+        if (title == null || title == '') {
+            title = false;
+        }
+        ;
+        if (url == null || url == '') {
+            url = "404.html";
+        }
+        ;
+        if (w == null || w == '') {
+            w = 800;
+        }
+        ;
+        if (h == null || h == '') {
+            h = ($(window).height() - 50);
+        }
+        ;
+        layer.open({
+            type: 2,
+            area: [w + 'px', h + 'px'],
+            fix: false, //不固定
+            maxmin: true,
+            shadeClose: true,
+            shade: 0.4,
+            title: title,
+            content: url
+        });
+    }
+
+    /*关闭弹出框口*/
+    function x_admin_close() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

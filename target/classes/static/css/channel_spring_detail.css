@@ -1,0 +1,164 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0; padding:0}
+body{ background:#f2f2f2; font:12px/25px \5B8B\4F53; color:#333;}
+a{color:#333333;text-decoration:none}
+a:hover{color:#09F;}
+ul,li{list-style:none}
+img{border:0;vertical-align:middle}
+table{border-collapse:collapse;border-spacing:0}
+/*.ytArea:after,.box-are:after {content:""; display:table; clear:both}*/
+#head{ background:#FFFFFF;}
+.ytArea {*zoom:1;   margin:0 auto;} 
+.fl,.ytArea .fl{float:left;display:inline}
+.fr,.ytArea .fr{float:right;display:inline}
+.hr10,.hr20 {clear:both;margin:0;padding:0;font-size:0;overflow:hidden;}
+.hr20 {height:20px;}
+.hr15 {height:15px;}
+.hr10 {height:10px;}
+.hr40 {height:40px;}
+.clear {clear:both; height:0px;margin:0;padding:0;font-size:0;overflow:hidden;}
+.ytArea,.minTopin,.headerIn,.mtcon,.titlebox,.banner{ width:1003px; font:14px/25px \5B8B\4F53;  margin:0 auto; }
+.ytArea a {
+	-webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+
+/*  所在位置 */
+.titles{ width:1003px; font:12px/60px \5B8B\4F53; height:60px;  margin:0 auto; color:#5e5e5e}
+.titles a{ color:#0099ff; }
+
+/*    课程     */
+.tecbox{ width:950px; margin:0 auto 10px; min-height:269px; border: 1px solid #d8d8d8; float: left; background:#fff; padding:30px 26px 0px 26px;}
+.tecbox .imgs{ display:block; width: 337px; min-height: 243px; overflow: hidden; float: left;}
+.tecbox .textbox{display:block; width:583px; min-height: 273px; overflow: hidden; color:#818181; float: right;}
+
+.textbox .text_top{ width:583px; padding-bottom:10px; border-bottom: 1px solid #d8d8d8 }
+.textbox h1{ font:21px/45px microsoft yahei; height:45px; float: left; width:100%;}
+.textbox .h_le{ float: left;}
+.textbox .h_ri{ float: right; font:12px \5B8B\4F53; color:#818181}
+.h_ri em{ font:bold 30px/45px "黑体"; color:#83c327}
+.tec{ height:40px; font:14px/40px \5B8B\4F53; clear: both;overflow:hidden;
+text-overflow:ellipsis;
+-o-text-overflow:ellipsis;
+white-space:nowrap;
+width:100%; }
+.tec a{ color:#252525}
+.tie{height:40px; font:14px/40px \5B8B\4F53}
+.tie span{ padding:4px; background:#8ad0ff; color:#fff;margin-right:11px;}
+.tie strong{ font:18px/40px microsoft yahei; color:#666666; padding-left:38px; float:right;}
+.tie em{ font:45px/40px "Arial"; color:#de0909}
+.tie i{ font:bold 18px \5B8B\4F53; margin-left:50px; color:#de0909;background:none;}
+.tie b{ font:16px microsoft yahei; color:#a8a8a8;  text-decoration:line-through;}
+
+.textbox .text_down{width:583px; min-height:50px; margin-top:25px; float: left; }
+.text_down .spam_le{ float: left; display:block; line-height:20px; width:290px; height:50px;}
+.spam_le .s_im{ width:37px; margin-right:10px; height: 43px; display: block; overflow: hidden; background:url('../images/time.png'); float: left;}
+.clor{ font:18px microsoft yahei; color:#ff9e01}
+
+.text_down .spam_rg{ float: right; display:block; width:255px;  position: relative; margin-top:7px; height:60px; }
+.spam_rg a{ float: right; margin-left:25px; margin-top:7px; float: left; _display:inline;}
+.rj_1{ display: block; background:url('../images/s_o.png') no-repeat center; width:21px; padding-top:15px; margin-top: 8px; height:20px;}
+.rj_1:hover{display: block; background:url('../images/s_h.png') no-repeat center; width:21px; padding-top:15px; height:20px;}
+
+
+.share_box {float:left;}
+.share_box .yic_box {display:none;}
+.share_show .yic_box {display: block;}
+
+.rj_2{ display: block;  position: relative; background:url('../images/z_o.png') no-repeat center; width:23px; padding-top:15px; height:20px;}
+.rj_2:hover{ display: block; background:url('../images/z_h.png') no-repeat center; width:23px; padding-top:15px; height:20px;}
+.rj_3{ display: block; background-color:#ffae00; width:129px;  height: 37px; color:#fff; font:18px/37px microsoft yahei; text-align:center;  border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px;}
+.rj_3:hover{ display: block; background-color:#ff8800; width:129px;  height: 37px; color:#fff; font:18px/37px microsoft yahei; text-align:center}
+.spam_rg .yic_box{ position: absolute;  top:38px; right:160px; width:160px; height:17px; padding:10px; z-index: 9; background:#fff;border: 3px solid #d8d8d8; }
+.yic_box a{ float: left; display: block; width:16px; height:16px; padding:0px!important; margin:0px 3px;}
+
+
+
+/* 课程列表  */
+.che_box{ width: 615px;  margin: 0 auto;padding-bottom:20px;}
+.cj_list{ width: 595px; margin: 0 auto; min-height: 200px; padding-left:16px; margin-left:4px;  border-left:1px solid #e6e6e6;}
+.cj_list li{ background:url(../images/k_1.png) no-repeat center; margin-top: 25px; width: 593px; height: 170px; position:relative;}
+.cj_list li i{ display:inline-block; position:absolute; width:9px; height:9px; left:-21px; top:63px; background:url(../images/point.jpg) no-repeat;}
+.cj_list li:hover{background:url(../images/k_2.png) no-repeat center;margin-top: 25px; width: 593px; height: 170px;}
+.cj_list li:hover i{background:url(../images/point_2.jpg) no-repeat;}
+
+.cj_box{ width: 550px; height: 140px; margin:0 auto; padding:13px}
+.cj_span,.cj_span img{ width:190px; height: 140px;display: block; float: left; overflow: hidden;}
+.text_jd{ width: 347px; height: 140px; line-height:35px; text-indent: 0px; float:right; color:#818181;}
+.text_jd h1{ font:18px/30px microsoft yahei; text-indent: 0px; width:100%; overflow: hidden;text-overflow: ellipsis;-o-text-overflow: ellipsis;white-space: nowrap;}
+.text_jd h1 a{color:#818181; }
+.text_jd em{color:#252525; font-size: 14px;}
+.text_jd span{padding: 4px;background: #8ad0ff;color: #fff;margin-right: 7px;}
+.pad{ padding-right:60px;}
+.text_jd strong{ font: 14px/35px \5B8B\4F53}
+.leftd { float: left;}
+.rightd { float: right;}
+.df_3{ display: block; margin-top:5px;  background-color:#ffae00; width:100px;  height: 30px; color:#fff; font:16px/30px microsoft yahei; text-align:center}
+.df_3:hover{ display: block;background-color:#ff8800; width:100px;  height: 30px; color:#fff; font:16px/30px microsoft yahei; text-align:center}
+.cj_list  .nrn{ margin-top: 0px;}
+.cj_list  .nrn:hover{ margin-top: 0px;}
+
+
+.m_tit h2 {font-size:16px; font-weight:normal;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.spam_rg {
+    position: relative;
+}
+
+.baiduSahre_box {
+    padding: 0px;
+    position: absolute;
+    top: 38px;
+    padding: 2px 10px;
+    border: #cccccc solid 2px;
+    background: #ffffff;
+    display: none;
+}
+
+h1 {
+    color: #000;
+}
+
+.text_down .spam_rg {
+    width:210px;
+}
+
+
+

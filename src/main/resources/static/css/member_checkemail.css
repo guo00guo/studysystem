@@ -1,0 +1,237 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.flowsteps {
+    width: 700px;
+    height: 68px;
+    margin: 60px auto 40px;
+    *zoom: 1;
+}
+
+    .flowsteps ol {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        *zoom: 1;
+    }
+
+    .flowsteps li {
+        float: left;
+        display: inline;
+        height: 68px;
+        font-size: 14px;
+        line-height: 23px;
+        color: #8b8b8b;
+        font-family: "\5FAE\8F6F\96C5\9ED1","\9ED1\4F53","\534E\6587\7EC6\9ED1";
+        list-style: none;
+        background: url(../images/checkemail_line.jpg) repeat-x 0 17px;
+    }
+
+    .flowsteps .num3 li {
+        width: 50%;
+    }
+
+    .flowsteps .num4 li, .flowsteps .num4 .last {
+        width: 33.3%;
+    }
+
+    .flowsteps .num5 li, .flowsteps .num5 .last {
+        width: 24.9%;
+    }
+
+    .flowsteps .num6 li, .flowsteps .num6 .last {
+        width: 19.9%;
+    }
+
+    .flowsteps .last {
+        width: auto!important;
+        position: absolute;
+        right: 0;
+        background: #FFF;
+    }
+
+    .flowsteps span {
+        float: left;
+        width: auto;
+    }
+
+    .flowsteps .last span {
+        width: 40px;
+    }
+
+    .flowsteps .first span {
+        *width: 0;
+        *white-space: nowrap;
+    }
+
+    .flowsteps em {
+        position: relative;
+        left: -50%;
+        display: block;
+        text-align: center;
+        font-style:normal;margin-top:10px;
+    }
+
+    .flowsteps li i {
+        position: relative;
+        left: -17px;
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        color: #FFF;
+        text-align: center;
+        font-size: 18px;
+        font-style: normal;
+        background: url(../images/checkemail_bg.jpg) no-repeat 50% 50%;
+    }
+
+    .flowsteps .first i {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .flowsteps .first i {
+        *width: 40px;
+    }
+
+    .flowsteps .first i, .flowsteps .first em, .flowsteps .last i, .flowsteps .last em {
+        left: 0;
+    }
+
+    .flowsteps .last i {
+        margin: 0 auto;
+        background: url(../images/checkemail_bg.jpg) no-repeat 50% 50%;
+    }
+
+    .flowsteps a {
+        color: #5185B6;
+        text-decoration: underline;
+    }
+
+    .flowsteps .done {
+        background-image: url(../images/checkemail_line.jpg);
+    }
+
+        .flowsteps .done span i {
+            background-image: url(../images/checkemail_middle.png);
+        }
+
+    .flowsteps .current, .flowsteps .current span {
+        color: #ff6824;
+    }
+
+        .flowsteps .current span i {
+            background-image: url(../images/checkemail_middle.png);
+        }
+
+
+        /*第一步*/
+.checkmail_1 {
+    margin-left:100px;
+    color:#666666;
+    font-size:14px;
+}
+    .checkmail_1 .in_1,.checkmail_1 .sub,.checkmail_1 .btn {
+        width:360px;
+        border:1px solid #cccccc;
+        padding:10px 5px;
+        border-radius:3px;
+    }
+    .checkmail_1 .sub {
+        background:#ffa339;
+        width:144px;
+        text-align:center;
+        color:#fff;
+        border:none;
+        margin-top:20px;
+        cursor:pointer;
+    }
+        .checkmail_1 .sub:hover {
+            background:#ff8800;
+        }
+    .checkmail_1 .btn {
+        width:128px;
+        text-align:center;
+        color:#fff;
+        border:none;
+        background:#41a3fb;
+        cursor:pointer;
+    }
+        .checkmail_1 .btn:hover {
+            background:#288ce6;
+        }
+    .checkmail_1 .s1 {
+        color:#999999;
+        font-size:14px;
+        display:none;
+        margin-left:13px;
+    }
+        .checkmail_1 .s1 img {
+            vertical-align:middle;
+            margin-top:-2px;
+            margin-right:6px;
+        }
+    .checkmail_1 .s2 {
+        margin-left:10px;
+        color:#ff0000;
+    }
+        .checkmail_1 .s2 i {
+            background:url(../images/all_img.png);
+            width:16px;
+            height:16px;
+            display:inline-block;
+            margin-right:5px;
+            vertical-align:middle;
+            margin-top:-2px;
+        }
+.checkmail_ok {
+    border:1px solid  #9ac87a;
+    background:#f1ffe6;
+    width:700px;
+    height:147px;
+    padding-top:25px;
+    margin-left:50px;
+}
+    .checkmail_ok .img {
+        float:left;
+        margin-right:11px;
+        width:114px;
+
+    }
+        .checkmail_ok .img img {
+            float:right;
+        }
+    .checkmail_ok ul {
+            float:left;
+            font-size:16px;
+            color:#333333;
+            line-height:30px;
+        }
+        .checkmail_ok ul .s1 {
+            color:#ff8800;
+        }
+            .checkmail_ok ul .s1 a {
+                margin-left:10px;
+                text-decoration:underline;
+                font-size:16px;
+
+            }
+        .checkmail_ok ul a {
+            font-size:12px;
+            color:#288ce6;
+        }
+            .checkmail_ok ul a:hover {
+                color:#288ce6;
+                text-decoration:underline;
+            }
+        .checkmail_ok ul .s2 {
+            color:#666;
+            font-size:12px;
+        }
+        .checkmail_ok ul .s3 {
+            margin:0 10px;
+            color:#999999;
+        }

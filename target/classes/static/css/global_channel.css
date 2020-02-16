@@ -1,0 +1,108 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/******岗位列表和所有课程列表的通用样式********/
+/* 当前位置*/
+.Current {
+    font-family: microsoft yahei;
+    font-size: 14px;
+    margin-top: 22px;
+    display: inline-block;
+    width: 100%;
+}
+    .Current span {
+        display: inline-block;
+        float: left;
+    }
+    .Current .s1 {
+        color: #666666;
+        margin-right: 5px;
+    }
+    .Current .s1 a {
+        color: #666666;
+    }
+        .Current .s1 font {
+            font-family: "宋体";
+        }
+    .Current .s2 {
+        color: #ff8800;
+        border: 1px solid #ccc;
+        padding: 0 8px;
+        padding-right: 20px;
+        position: relative;
+        height: 28px;
+        line-height: 26px;
+        margin-right: 10px;
+        margin-top:-6px;
+    }
+        .Current .s2 img {
+            position: absolute;
+            right: 6px;
+            top: 10px;
+        }
+    .Current .s3 {
+        position: relative;
+        height: 28px;
+        line-height: 26px;
+        margin-bottom: 20px;
+        float: right;
+        border: 1px solid #ccc;
+        margin-top:-6px;
+
+    }
+
+        .Current .s3 a {
+            color: #6e6e6e;
+            display: block;
+            padding: 0 8px;
+            padding-right: 22px;
+            background: #f7f7f7;
+        }
+        .Current .s3 i {
+            position: absolute;
+            right: 7px;
+            top: 11px;
+            width: 9px;
+            height: 6px;
+            display: inline-block;
+            background: url(../images/find_ico01.jpg) no-repeat;
+        }
+        .Current .s3 .i_show {
+            background: url(../images/find_ico02.jpg) no-repeat;
+        }
+
+
+/**-----总分类样式-----**/
+/*.category_v3{font-family:microsoft yahei;background:#FFF; position:relative; width:1180px;}
+
+.category_v3 ul {margin:auto; font-size:12px; padding:0;background:#FFF; overflow:hidden; line-height:32px; height:450px;padding:5px 0px 0 0; border:1px solid #ddd;}
+
+.category_v3 li{position:relative; padding:0 20px; white-space:nowrap; margin-top:6px;display: inline-block; float:left; overflow:hidden; border-bottom:1px dotted #ddd; padding-bottom:5px; width:1140px;}
+.category_v3 li:last-child {border-bottom:none;}
+.category_v3 .all_cat{ cursor:pointer;}
+.category_v3 li h2,.category_v3 li strong {font-size:17px;font-weight: 700;color: #333; float:left; width:85px;}
+.category_v3 li h2 a,.category_v3 li strong a{font-size:17px;font-weight: 700;color: #333;padding:0;}
+.category_v3 .m_cat_img{ 
+	vertical-align:middle; margin-top:-2px; margin-left:10px; 
+	}
+	
+.category_v3 .c_desc{ float:right; width:1050px;}
+.category_v3 span a{display: inline-block;font-size: 14px;color: #6E6E6E; padding:0 12px;word-break: break-all;word-wrap: break-word; -webkit-transition: color 0.1s ease-in-out;-moz-transition: color 0.1s ease-in-out;transition: color 0.1s ease-in-out;}
+.category_v3 span a:hover {color:#f80;}
+.category_v3 .now{background: #13a5f0;color:#fff;border-radius: 5px; margin:0 12px;}
+.category_v3 .now:hover{color:#fff;}
+.category_v3 .all_p{width:55px; display:inline-block;}
+.category_v3 span{ float:left;}
+.gw_more{ position:absolute; text-align:center; width:117px; height:27px; border:1px solid #d9d9d9; border-top:none; left:50%; margin-left:-58px; bottom:-28px; background:#fff;}
+.gw_more a{ background:url(../images/gw_ioc.jpg) no-repeat 3px 4px;color:#0093dd !important; padding-left:20px !important; cursor:pointer;}
+.gw_more a img{ margin-right:10px; vertical-align:middle; margin-top:-2px;}
+
+.category_curr {overflow:hidden;}
+.category_curr dl{margin-bottom:10px; margin-top:20px;}
+.category_curr dt{border:1px solid #f17700; background:#f80; height:37px; line-height:37px; padding-left:10px; padding-right:27px; color:#fff; font-size:16px; float:left; position:relative; border-radius:3px; -webkit-transition: background 0.2s ease-in-out;-moz-transition: background 0.2s ease-in-out;transition: background 0.2s ease-in-out;}
+.category_curr dt:hover {background:#f60;border:1px solid #e94707;}
+.category_curr dt img{ position:absolute; right:12px; top:15px;}
+.category_curr dd{ float:left; margin-left:12px;}
+.c_more{float:right; *margin-top:-25px; border:1px solid #ddd; padding:0 10px;}
+.c_more a{background:url(../images/find_ico02.jpg) no-repeat right; line-height:37px; height:37px; padding-right:17px;font-size:14px;font-weight:normal;cursor:pointer;color:#5d6469; display:block;}*/
+/*分类结束*/

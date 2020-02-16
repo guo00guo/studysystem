@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xzc.mapper.CourseSortTwoMapper">
+
+    <resultMap id="CourseSortTwoMap" type="com.xzc.model.CourseSortTwo">
+        <id property="courseSortTwoId" column="courseSortTwoId" javaType="java.lang.Integer"/>
+        <result property="courseSortTwoName" column="courseSortTwoName" javaType="java.lang.String"/>
+        <result property="courseSortOneId" column="courseSortOneId" javaType="java.lang.Integer"/>
+        <collection property="courseList" column="courseSortTwoId" select="com.xzc.mapper.CourseMapper.getCourseByCourseSortTwoId">
+        </collection>
+    </resultMap>
+
+
+    <select id="getCourseSortTwosByCourseOneId" resultType="com.xzc.model.CourseSortTwo">
+        select * from t_coursesorttwo where courseSortOneId = #{courseSortOneId}
+    </select>
+
+    <select id="getCourseSortTwoByCourseSortOneId" resultMap="CourseSortTwoMap">
+        select * from t_coursesorttwo where courseSortOneId = #{courseSortOneId}
+    </select>
+
+</mapper>

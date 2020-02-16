@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xzc.mapper.CourseSortOneMapper">
+
+    <!--自定义返回类型  一级分类包含二级分类-->
+    <resultMap id="CourseSortOneMap" type="com.xzc.model.CourseSortOne">
+        <id property="courseSortOneId" column="courseSortOneId" javaType="java.lang.Integer"/>
+        <result property="courseSortOneName" column="courseSortOneName" javaType="java.lang.String"/>
+
+        <collection property="courseSortTwoList" column="courseSortOneId" select="com.xzc.mapper.CourseSortTwoMapper.getCourseSortTwosByCourseOneId">
+
+        </collection>
+    </resultMap>
+
+    <select id="getAllCourseSort" resultMap="CourseSortOneMap">
+        select * from t_coursesortone
+    </select>
+
+    <select id="getAllCourseSortOne" resultType="com.xzc.model.CourseSortOne">
+        select * from t_coursesortone
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.xzc.model.CourseSortOne">
+        select *
+        from t_coursesortone
+        where courseSortOneId = #{courseSortOneId,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectAllSortTwoBySortOneId" parameterType="java.lang.Integer" resultType="com.xzc.model.CourseSortTwo">
+        select t.courseSortTwoId, t.courseSortTwoName
+        from t_coursesortone o,t_coursesorttwo t where o.courseSortOneId = t.courseSortOneId
+        <if test="courseSortOneId != null">
+            and t.courseSortOneId = #{courseSortOneId}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from t_coursesortone
+        where courseSortOneId = #{courseSortOneId,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateCourseSortOne" parameterType="com.xzc.model.CourseSortOne">
+        update t_coursesortone
+        <set>
+            <if test="courseSortOneName != null">
+                courseSortOneName = #{courseSortOneName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where courseSortOneId = #{courseSortOneId}
+    </update>
+
+    <insert id="addCourseSortOne" parameterType="com.xzc.model.CourseSortOne">
+        insert into t_coursesortone (courseSortOneName)
+        values (#{courseSortOneName,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteCourseSortOneById" parameterType="int">
+        DELETE from `t_coursesortone` where
+        <if test="courseSortOneId != null">
+            courseSortOneId = #{courseSortOneId,jdbcType=INTEGER}
+        </if>
+    </delete>
+
+    <select id="seleteByPage" resultType="com.xzc.model.CourseSortOne">
+        SELECT * FROM `t_coursesortone` limit #{nowPage},#{pageSize}
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        select count(*) from `t_coursesortone`
+    </select>
+
+    <select id="selectByPageByName" parameterType="java.lang.String" resultType="com.xzc.model.CourseSortOne">
+        select * from t_coursesortone
+        <if test="queryName != null and queryName !=''">
+            where courseSortOneName like concat(#{queryName},'%') ORDER BY courseSortOneName
+        </if>
+        limit #{nowPage},#{pageSize}
+    </select>
+
+    <select id="selectByName" parameterType="java.lang.String" resultType="com.xzc.model.CourseSortOne">
+        select * from t_coursesortone
+        <if test="queryName != null and queryName !=''">
+            where courseSortOneName like concat(#{queryName},'%') ORDER BY courseSortOneName
+        </if>
+    </select>
+
+</mapper>

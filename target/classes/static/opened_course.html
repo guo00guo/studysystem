@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+		<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<title>已开课程</title>
+		<!--JS文件-->
+
+		<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<script src="js/layer.min.js" type="text/javascript"></script>
+		<link type="text/css" rel="stylesheet" href="css/layer.css" id="skinlayercss" />
+		<script src="js/jquery.cookie.js" type="text/javascript"></script>
+
+		<!--选择栏目样式-->
+		<link href="css/channel_search.css" type="text/css" rel="stylesheet" />
+		<script src="js/channel_search.js" type="text/javascript"></script>
+
+	</head>
+	<body>
+
+		<!--导入top.html-->
+		<div id="top"></div>
+		<script>
+			$("#top").load("top_teacher.html");
+		</script>
+
+		<div class="hr20"></div>
+		<div class="clear"></div>
+		<div class="banner">
+			<div class="talist">
+				<ul class="ul_ol">
+					<ol>
+						<a href="javascript:void(0);" class="now" title="已开课程">已开课程(
+							<span id="course_num_span" style="color:red">0</span> )
+						</a>
+					</ol>
+				</ul>
+				<div class="clear"></div>
+				<!-- 课程开始-->
+				<ul class="nb_01">
+				</ul>
+				<!--课程结束-->
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<!--导入footer.html-->
+		<div id="footer" style="width: 100%;"></div>
+		<script>
+			$("#footer").load("footer.html");
+		</script>
+	</body>
+	<script>
+		var storage = window.sessionStorage;
+		var userdata = JSON.parse(storage["userdata"]);
+		if ($.isEmptyObject(userdata)) {
+			console.log("数据为空");
+		}
+		//获取推荐课程信息
+		$.ajax({
+			type: 'post',
+			url: 'teacher/getOpenCourseByUserId',
+			data: {
+				userId: userdata.userId
+			},
+			dataType: "json",
+			success: function (data) {
+				if (data.length == 0) {
+					$(".talist").css("height", "600px");
+					$(".talist").append("<li style='position: relative;'><h3>没有开设课程信息, 请开设课程！</h3></li>");
+				} else {
+					$("#course_num_span").text(data.length);
+					//展示课程信息
+					for (var i = 0; i < data.length; i++) {
+						console.log(data[i].courseName);
+						$(".nb_01").append(
+								"<li style='position: relative;'>" +
+								"<a alt='" + data[i].courseName + "' style='float: left; margin: 0 15px;' href='teacher_openedcourse_detail.html?courseId=" + data[i].courseId + "' title='" + data[i].courseName + "' target='_blank'> <img align='left' src='" + data[i].imageUrl + "' class='img_to_big' alt='" + data[i].courseName + "' /></a>" +
+								"<div style='float: left; width: 930px; margin-left: 10px;'>" +
+								"<h3><a href='teacher_openedcourse_detail.html?courseId=" + data[i].courseId + "' title='" + data[i].courseName + "' target='_blank'><span class='highlight'>" + data[i].courseName + "</span></a></h3>" +
+								"<p style='color: #5f5f5f'> <img style='width: 16px; height: 16px;' src='images/jiantou.jpg' alt='图标' />&nbsp;&nbsp;" + data[i].description + "</p>" +
+								"<div style='position: absolute; bottom: 20px; right: 20px;'>" +
+								"<a target='_blank' href='teacher_openedcourse_detail.html?courseId=" + data[i].courseId + "' title='查看课程'> <img style='width: 120px; height: 35px;' src='images/viewCourse.png' alt='查看课程' /> </a>" +
+								// "<a class='btn' target='_blank' href='teacher_openedcourse_detail.html?courseId=" + data[i].courseId + "' title='查看课程' style='text-decoration:none; width: 120px; height: 35px; background: #FF8800; color:white;font-size: 16px;" +
+								// " line-height: 18px; margin-right: 5px;' title='公布课程'>查看课程 </a>" +
+								"</div> </div> <div class='clear'></div> </li>"
+						);
+					}
+				}
+			},
+			error:function(data){
+				alert("出现异常，异常原因【" + data + "】!");
+			}
+		});
+
+	</script>
+</html>

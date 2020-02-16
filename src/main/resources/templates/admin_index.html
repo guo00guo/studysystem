@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>后台管理首界面</title>
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <link rel="stylesheet" href="css/x-admin.css" th:href="@{css/x-admin.css}" media="all"/>
+        <link id="bg" rel="stylesheet" type="text/css" href="css/skin_default.css" th:href="@{css/skin_default.css}"/>
+    </head>
+    <script type="text/javascript">
+		window.onload=function(){
+			var oDefault=document.getElementById('default');
+			var oGreen=document.getElementById('green');
+			var oBlack=document.getElementById('black');
+			var oBg=document.getElementById('bg');
+			oDefault.onclick=function(){
+				oBg.href="/css/skin_default.css";
+			};
+			oGreen.onclick=function(){
+				oBg.href="/css/skin_green.css";
+			};
+			oBlack.onclick=function(){
+				oBg.href="/css/skin_black.css";
+			};
+		};
+	</script>
+    <body>
+        <div class="layui-layout layui-layout-admin">
+            <!--引入抽取的admin_top	-->
+            <!--模板名：会使用thymeleaf的前后缀配置规则进行解析-->
+            <!--<div th:replace="commons/bar::#admin_top"></div>-->
+            <!--引入抽取的sidebar	-->
+            <!--<div th:replace="commons/bar::#sidebar"></div>-->
+
+            <div class="layui-header header header-demo" id="admin_top" style="height: 60px;">
+                <div class="layui-main" style="height: 60px;">
+                    <div style="height: 70px;">
+                        <a class="logo" style="line-height: 60px;" href="admin_index.html" th:href="@{admin_index.html}">
+                            个性化学习系统
+                        </a>
+                    </div>
+                    <ul class="layui-nav" lay-filter="" style="top: 5px;">
+                        <!--<li class="layui-nav-item"><img src="/images/507_353_279.jpg" th:src="@{/images/507_353_279.jpg}" class="layui-circle"-->
+                                                        <!--style="border: 2px solid #A9B7B7;" width="35px" alt=""/></li>-->
+                        <li class="layui-nav-item">
+                            <!--<a><input type="text" id="realNmae" value="admin"> </a>-->
+                            <a>admin</a>
+                            <dl class="layui-nav-child"><!--th:href="@{/AdminInforPage}-->
+                                <dd><a th:onclick="'javascript:skim(\'查看个人信息\',\'/adminInforPage\',\'\',\'510\');'">个人信息</a></dd>
+                                <dd><a th:onclick="'javascript:skim(\'修改密码\',\'/adminChangePwdPage\',\'\',\'310\');'">修改密码</a></dd>
+                                <dd><a onclick="changeUser()">切换帐号</a></dd>
+                                <dd><a style="cursor: pointer;" onclick="userLogout()">退出后台</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item">
+                            <a>换肤</a>
+                            <dl class="layui-nav-child">
+                                <dd><a id="default">默认</a></dd>
+                                <dd><a id="green">绿色</a></dd>
+                                <dd><a id="black">黑色</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="layui-side layui-bg-black x-side" id="sidebar" style="top: 60px;">
+                <div class="layui-side-scroll">
+                    <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="side">
+
+                        <!--导航管理-->
+                        <li class="layui-nav-item">
+                            <a class="javascript:;" href="javascript:;">
+                                <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>导航管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd class="">
+                                <dd class="">
+                                    <a href="javascript:;" _href="adminGetAllGoodCourse"><!---->
+                                        <cite>首页精品课程管理</cite>
+                                    </a>
+                                </dd>
+                                </dd>
+                                <dd class="">
+                                <dd class="">
+                                    <a href="javascript:;" _href="adminGetAllRollCourse">
+                                        <cite>首页轮播课程管理</cite>
+                                    </a>
+                                </dd>
+                                </dd>
+                                <!--<dd class="">-->
+                                <!--<dd class="">-->
+                                    <!--<a href="javascript:;" _href="adminGetAllDayCourse"  >-->
+                                        <!--<cite>每日一课课程管理</cite>-->
+                                    <!--</a>-->
+                                <!--</dd>-->
+                                <!--</dd>-->
+                            </dl>
+                        </li>
+
+                        <!--课程管理-->
+                        <li class="layui-nav-item">
+                            <a class="javascript:;"  _href="adminGetAllCourse/null/1">
+                                <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>课程管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd class="">
+                                <dd class="">
+                                    <a href="javascript:;" _href="adminGetAllCourseSortOne/null/1">
+                                        <cite>分类管理</cite>
+                                    </a>
+                                </dd>
+                                </dd>
+                                <dd class="">
+                                <dd class="">
+                                    <a href="javascript:;" _href="adminGetAllCourse/null/1">
+                                        <cite>课程管理</cite>
+                                    </a>
+                                </dd>
+                                </dd>
+                            </dl>
+                        </li>
+
+                        <!--用户管理-->
+                        <li class="layui-nav-item">
+                            <a class="javascript:;" href="javascript:;" _href="User_management.html"  >
+                                <i class="layui-icon" style="top: 3px;">&#xe612;</i><cite>用户管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd class="">
+                                <dd class="">
+                                    <a href="javascript:;" _href="adminGetAllStudent/null/1" >
+                                        <cite>学习者管理</cite>
+                                    </a>
+                                </dd>
+                                </dd>
+                                <dd class="">
+                                <dd class="">
+                                    <a href="javascript:;" _href="adminGetAllTeacher/null/1">
+                                        <cite>教师管理</cite>
+                                    </a>
+                                </dd>
+                                </dd>
+                            </dl>
+                        </li>
+
+                        <!--搜索管理-->
+                        <li class="layui-nav-item">
+                            <a class="javascript:;" href="javascript:;">
+                                <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>搜索管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd class="">
+                                <dd class="">
+                                    <a href="javascript:;" _href="findTopSerachByName/null/1" >
+                                        <cite>热搜设置</cite>
+                                    </a>
+                                </dd>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="layui-tab layui-tab-card site-demo-title x-main" lay-filter="x-tab" lay-allowclose="true" style="top: 50px;">
+                <div class="x-slide_left"></div>
+                <ul class="layui-tab-title">
+                    <li class="layui-this">
+                        首页轮播课程管理
+                        <i class="layui-icon layui-unselect layui-tab-close">ဆ</i>
+                    </li>
+                </ul>
+                <div class="layui-tab-content site-demo site-demo-body">
+                    <div class="layui-tab-item layui-show">
+                        <iframe id="myIframe" frameborder="0" src="adminGetAllRollCourse" class="x-iframe"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="/lib/layui/layui.js" th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+        <script src="/js/x-admin.js" th.src="@{/js/x-admin.js}"></script>
+
+        <script>
+
+            function btn() {
+                var storage = window.sessionStorage;
+                var userdata = JSON.parse(storage["userdata"]);
+                console.log(userdata)
+//                alert(userdata.userName);
+            }
+            layui.use(['laydate','element','laypage','layer'], function(){
+                $ = layui.jquery;//jquery
+                laydate = layui.laydate;//日期插件
+                lement = layui.element();//面包导航
+                laypage = layui.laypage;//分页
+                layer = layui.layer;//弹出层
+
+                layer.ready(function(){ //为了layer.ext.js加载完毕再执行
+                    layer.photos({
+                        photos: '#x-img'
+                        //,shift: 5 //0-6的选择，指定弹出图片动画类型，默认随机
+                    });
+                });
+
+            });
+//            $(document).ready(function(){
+//                var storage = window.sessionStorage;
+//                var userdata = JSON.parse(storage["userdata"])
+//                var realName = userdata.realName;
+//                alert($("#realNmae").attr("value"));
+//                $("#realNmae").attr("value",realNmae);
+//                alert($("#realNmae").attr("value"));
+//            })
+//            window.onload = function(){
+//                var storage = window.sessionStorage;
+//                var userdata = JSON.parse(storage["userdata"])
+//                var realName = userdata.realName;
+//                alert($("#realNmae").attr("value"));
+//                $("#realNmae").attr("value",realNmae);
+//                alert($("#realNmae").attr("value"));
+//            }
+
+            /**/
+            function skim(title, url,w, h) {
+                var storage = window.sessionStorage;
+                var userdata = JSON.parse(storage["userdata"])
+                var username = userdata.userName;
+                var realName = userdata.realName;
+                x_admin_skim(title, url,username,w, h);
+            }
+
+            function x_admin_skim(title, url,username,w, h) {
+                if (title == null || title == '') {
+                    title = false;
+                }
+                ;
+                if (url == null || url == '') {
+                    url = "404.html";
+                }
+                ;
+                if (w == null || w == '') {
+                    w = 700;
+                }
+                ;
+                if (h == null || h == '') {
+                    h = ($(window).height() - 50);
+                }
+                ;
+                layer.open({
+                    type: 2,
+                    area: [w + 'px', h + 'px'],
+                    fix: false, //不固定
+                    maxmin: true,
+                    shadeClose: true,
+                    shade: 0.4,
+                    title: title,
+                    content: url + '/' + username
+                });
+            }
+
+            /*关闭弹出框口*/
+            function x_admin_close() {
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            }
+
+
+            function userLogout() {
+                $.ajax({
+                    type: 'post',
+                    url: 'user/logout',
+                    success: function () {
+                        if (!window.sessionStorage) {
+                            alert("浏览器不支持sessionStorage");
+                            return false;
+                        } else {
+                            var storage = window.sessionStorage;
+                            alert("退出成功");
+                            storage.clear();
+                            window.location.href = 'index.html';
+                        }
+                    }
+                });
+            }
+            function changeUser() {
+                $.ajax({
+                    type: 'post',
+                    url: 'user/logout',
+                    success: function () {
+                        if (!window.sessionStorage) {
+                            alert("浏览器不支持sessionStorage");
+                            return false;
+                        } else {
+                            var storage = window.sessionStorage;
+                            alert("退出成功");
+                            storage.clear();
+                            window.location.href = 'login.html';
+                        }
+                    }
+                });
+            }
+        </script>
+
+        <script>
+	        var _hmt = _hmt || [];
+	        (function() {
+	          var hm = document.createElement("script");
+	          var s = document.getElementsByTagName("script")[0]; 
+	          s.parentNode.insertBefore(hm, s);
+	        })();
+        </script>
+    </body>
+
+</html>

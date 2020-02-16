@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xzc.mapper.CourseUnitMapper">
+
+
+    <!--自定义返回类型  一级分类包含二级分类-->
+    <resultMap id="UnitAndKP" type="com.xzc.model.CourseUnit">
+        <id property="courseUnitId" column="courseUnitId" javaType="java.lang.Integer"/>
+        <result property="courseId" column="courseId" javaType="java.lang.Integer"/>
+        <result property="courseUnitName" column="courseUnitName" javaType="java.lang.String"/>
+        <collection property="courseKpList" column="courseUnitId" select="com.xzc.mapper.CourseKpMapper.getCourseKpsByCourseUnitId">
+        </collection>
+    </resultMap>
+
+
+    <select id="getCourseUnitsByCourseId" resultMap="UnitAndKP">
+        select * from t_courseunit where courseId = #{courseId}
+    </select>
+
+</mapper>

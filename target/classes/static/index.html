@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+		<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<title>首页</title>
+
+		<link rel="stylesheet" type="text/css" href="css/banner_change/index.css">
+		<script src="js/banner_change/jquery-1.8.3.min.js"></script>
+		<script src="js/banner_change/base.js"></script>
+		<script src="js/banner_change/slider.js"></script>
+		<script src="js/banner_change/public.js"></script>
+
+		<!--选择栏目样式-->
+		<!--默认文件加载-->
+		<script src="js/jquery.lazyload.js" type="text/javascript"></script>
+		<link href="css/index.css" type="text/css" rel="stylesheet" />
+		<script>
+			document.createElement("top")
+		</script>
+		<script>
+			document.createElement("search")
+		</script>
+		<script>
+			document.createElement("light")
+		</script>
+		<script>
+			document.createElement("light1")
+		</script>
+
+	</head>
+
+	<body>
+		<!--导入top.html-->
+		<div id="top"></div>
+		<script>
+			$("#top").load("top.html");
+		</script>
+
+		<section class="dao_hang">
+			<nav>
+				</div>
+				<!--全部商品分类-->
+				<div class="important">
+					<img src="images/banner_change/all_list.png" style=" margin-top:14px; margin-left: 5px;">
+					<h1>全部课程分类</h1>
+					<aside style="top:42px;">
+						<ul class="sortOne_ul"></ul>
+					</aside>
+					<div class="sortTwoDiv"></div>
+				</div>
+			</nav>
+		</section>
+
+		<!--banner-->
+		<div id="banner_tabs" class="flexslider">
+			<ul class="slides"></ul>
+			<ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
+				<li class="active">
+					<a>1</a>
+				</li>
+				<li>
+					<a>2</a>
+				</li>
+				<li>
+					<a>3</a>
+				</li>
+				<li>
+					<a>4</a>
+				</li>
+			</ol>
+		</div>
+		
+		<!--gong告-->
+		<script type="text/javascript">
+			window.onload = function() {
+				$("top").animate({
+					'margin-top': '0'
+				}, 2000)
+				$(".advertisement").animate({
+					'top': '42',
+					'opacity': '1'
+				}, 200)
+				$(".flexslider").animate({
+					'margin-top': '0'
+				}, 200)
+				$("aside").animate({
+					'top': '42',
+					'opacity': '1'
+				}, 200)
+				$("top").animate({
+					'margin-top': '-400'
+				}, 1000)
+			}
+		</script>
+
+		<!--课程-->
+		<div class="topics_index">
+			<div class="index_main">
+				<div class="index_title">
+					<h3 title="精品课程" class="h_01">精品课程</h3>
+					<h4 class="h_02">【精品课程，快速提高你的学识！】</h4>
+					<div class="clear"></div>
+				</div>
+
+				<div class="topics">
+					<ul id="topicsOne"></ul>
+					<ul id="topicsTwo"></ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!--导入footer.html-->
+		<div id="footer" style="width: 100%;"></div>
+		<script>
+			$("#footer").load("footer.html");
+		</script>
+	</body>
+
+	<script>
+        //获取首页课程分类
+        $.ajax({
+            url: 'CourseSortOne/getAllCourseSort',
+            type: 'post',
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+
+                //循环显示出一级分类
+                for(var i = 0; i < data.length; i++){
+                    //创建一级分类
+                    $(".sortOne_ul").append("<li class='cates' mt-ct='list0" + (i+1) +
+                        "'><h3 courseOneId='" + data[i].courseSortOneId +
+                        "' onclick='findCoursesBySortOneId(this)'>"+ data[i].courseSortOneName +
+                        "</h3></li>");
+
+                    //创建二级分类的div
+                    $(".sortTwoDiv").append("<div class='import_list b-list0" + (i+1) +
+                        "'><dt>全部：</dt><dd class='sortTwoDD sortTwoDDNoAdd'></dd></div>");
+
+                    //循环显示出二级分类
+                    for(var j = 0; j < data[i].courseSortTwoList.length; j++){
+                        //创建二级分类
+                        $(".sortTwoDDNoAdd").append("<a courseTwoId='"+
+							data[i].courseSortTwoList[j].courseSortTwoId +
+							"' courseOneId='" + data[i].courseSortOneId +
+                            "' onclick='findCoursesBySortTwoId(this)'>" +
+                            data[i].courseSortTwoList[j].courseSortTwoName +
+                            "</a>");
+                    }
+                    $(".sortTwoDD").removeClass("sortTwoDDNoAdd");
+                }
+
+                //加载js渲染新加的元素
+                Ontest();
+            }
+        });
+
+        //获取首页轮播课程
+        $.ajax({
+            url: 'RollCourse/getAllCourse',
+            type: 'post',
+            dataType: "json",
+            success: function (data) {
+                //循环显示出轮播分类
+                for(var i = 0; i < data.length; i++){
+                    $(".slides").append("<li> <a target='_blank' courseId='"+
+                        data[i].courseId +
+                        "' href='course_detail.html?courseId="+ data[i].courseId +"' > <img style='background:#e1211e url(" +
+                        data[i].imageUrl +
+                        ") no-repeat center;' src='images/banner_change/alpha.png'> </a> </li>"
+                    );
+                }
+                $("a").css("cursor", "pointer");
+            }
+        });
+
+        //获取首页精品课程
+        $.ajax({
+            url: 'GoodCourse/getAllGoodCourse',
+            type: 'post',
+            dataType: "json",
+            success: function (data) {
+                //循环显示
+                for(var i = 0; i < data.length - 4; i++){
+					$("#topicsOne").append("<li><div class='topics_left'> <a courseId='" +
+                        data[i].courseId +
+						"' href='course_detail.html?courseId="+ data[i].courseId +"'><img src='" +
+                        data[i].imageUrl +
+						"' class='lazy'/></a> </div> </li>"
+					);
+                }
+
+                //循环显示
+                for(var i = 4; i < data.length; i++){
+                    $("#topicsTwo").append("<li><div class='topics_left'> <a courseId='" +
+                        data[i].courseId +
+                        "' href='course_detail.html?courseId="+ data[i].courseId +"'><img src='" +
+                        data[i].imageUrl +
+                        "' class='lazy'/></a> </div> </li>"
+                    );
+                }
+
+                $("a").css("cursor", "pointer");
+            }
+        });
+
+		//点击一级分类，跳转到course.html界面
+		function findCoursesBySortOneId(that){
+            var courseOneId = $(that).attr("courseOneId");
+
+            window.location.href = "course.html?courseOneId=" + courseOneId;
+		}
+
+        function findCoursesBySortTwoId(that){
+            var courseTwoId = $(that).attr("courseTwoId");
+            var courseOneId = $(that).attr("courseOneId");
+
+            window.location.href = "course.html?courseOneId=" + courseOneId + "&courseTwoId=" + courseTwoId;
+        }
+
+        function Ontest() {
+		    $(".cates").on("mouseenter", function(){
+				var cat=$(this).attr("mt-ct");
+				$(".b-"+cat+"").show().siblings().hide();
+			});
+
+            $(".important").on("mouseleave", function(){
+                $(".import_list").hide();
+            });
+
+            $("aside ul li").on("mouseenter", function(){
+                $(this).addClass("yanses").siblings().removeClass("yanses");
+            });
+        }
+	</script>
+</html>

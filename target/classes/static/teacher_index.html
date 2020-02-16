@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <title>教师中心</title>
+    <link rel="stylesheet" href="member/css/global.css"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="css/layer.css" id="skinlayercss"/>
+    <link href="member/css/style.css" type="text/css" rel="stylesheet"/>
+    <script src="js/jquery-1.9.1.min.js"></script>
+
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script src="./js/x-layui.js"></script>
+</head>
+
+<body>
+<div class="container-fluid company_top">
+    <div class="center-block w_1200 center-block">
+        <div class="logo">
+            <a href="opened_course.html" style="padding-top:8px;color: white; font-size: 28px;float: left;cursor: pointer;">个性化学习系统</a>
+        </div>
+        <div class="member_name">
+            <dl class="member_con" id="m_info">
+                <a>
+                    <dt>
+                        <img class="imageUrl" src=""/>
+                    </dt>
+                    <dd>
+                        <strong class="userName"></strong>
+                        <strong class="realName"></strong>
+                    </dd>
+
+                </a>
+            </dl>
+        </div>
+        <div class="top_nav">
+            <dl>
+                <dd>
+                    <a href="opened_course.html">首页</a>
+                </dd>
+                <dd>
+                    <a href="opened_course.html">已开课程</a>
+                </dd>
+                <dd>
+                    <a href="unopened_course.html">待开课程</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<!-- 内容 -->
+
+<div class="main">
+    <div class="mtcon">
+
+        <!-- 左边导航 -->
+        <div class="leftbox">
+            <ul class="l_list">
+                <li>
+                    <!-- 标题 -->
+                    <p data-attr="" data-val="1" class="m_title">
+								<span> 
+									<img src="images/r_1.jpg"/>
+								</span>
+                        <strong>
+                            <img src="images/l_2.png"/>
+                        </strong>
+                        <a href="javascript:">个人中心</a>
+                    </p>
+                    <ul>
+                        <li id="q_text_1">
+                            <div class="q_text">
+                                <p>
+                                    <a id="right_one" class="m_option">账户信息</a>
+                                </p>
+                                <p>
+                                    <a id="right_two" class="m_option">修改资料</a>
+                                </p>
+                                <p>
+                                    <a id="right_three" class="m_option">修改密码</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <!-- 我的学习 -->
+                    <p data-val="2" class="m_title">
+                        <span> <img src="images/r_1.jpg"/></span>
+                        <strong> <img src="images/l_4.png"/></strong>
+                        <a href="javascript:">课程管理</a>
+                    </p>
+                    <ul>
+                        <li id="q_text_2">
+                            <div class="q_text">
+                                <p>
+                                    <a id="right_four" class="m_option">已开课程</a>
+                                </p>
+                                <p>
+                                    <a id="right_five" class="m_option">待开课程</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <!-- 账号管理 -->
+                    <ul>
+                        <li id="q_text_6">
+                            <div class="q_text">
+                                <p>
+                                    <a class="m_option" onclick="userLogout()">退出登录</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- 右边导航  index  -->
+        <div id="right_one" class="rightbox">
+            <!-- 账号信息 -->
+            <p class="r_title">账号信息</p>
+            <!-- 信息 -->
+            <div class="ind_box">
+                <!-- 个人中心 -->
+                <div class="inx_box">
+                    <ul class="olist">
+                        <li class="li_o">
+                            <div class="img_v">
+                                <img width="80" height="80" src="" class="imageUrl"/>
+                            </div>
+                            <div class="text_v">
+                                <p><b class="realName"></b><b>老师</b></p>
+                                <p><strong></strong> 您好！</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hr10"></div>
+            </div>
+            <div class="hr20"></div>
+        </div>
+
+        <!-- 右边导航  info  -->
+        <div id="right_two" class="rightbox hidden">
+            <!-- 账号信息 -->
+            <p class="r_title">修改资料</p>
+            <!-- 信息 -->
+            <div class="per_box">
+                <form autocomplete="off" method="post" id="form_UserInfo" class="nice-validator n-default"
+                      novalidate="novalidate">
+                    <table class="up_table">
+                        <tbody>
+                        <tr valign="top">
+                            <td headers="" rowspan="" colspan="2">
+                                <div class="upload_right">
+                                    <img width="120" height="120" style="width:120px; height:120px;"
+                                         src="" id="imgUserFace" class="imageUrl"/>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <div>
+                            <input type="file" style="cursor:pointer;" onchange="changepic(this)" value="上传头像"
+                                   id="imageUrl"/>
+                        </div>
+
+                        <tr>
+                            <td headers="" rowspan="" colspan="">登录ID</td>
+                            <td headers="" rowspan="" colspan="" class="userName">000001</td>
+                        </tr>
+                        <tr>
+                            <td headers="" rowspan="" colspan="">姓名</td>
+                            <td headers="" rowspan="" colspan="" id="realName">大枣1234</td>
+                        </tr>
+                        <tr>
+                            <td headers="" rowspan="" colspan="">性别</td>
+                            <td headers="" rowspan="" colspan="">
+                                <input type="radio" value="0" name="sex" class="rad" checked="checked"/>保密&nbsp;&nbsp;
+                                <input type="radio" value="男" name="sex" class="rad"/>男&nbsp;&nbsp;
+                                <input type="radio" value="女" name="sex" class="rad"/>女
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td headers="" rowspan="" colspan="">介绍</td>
+                            <td headers="" rowspan="" colspan="">
+                                <input type="text" data-tip="请介绍您自己" value="" name="description" id="description"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p style=" float:none; padding:0px; padding-bottom:30px; padding-top:15px; padding-left:110px; clear:both;">
+                        <input value="提交" style="cursor:pointer; width:84px; height:41px; border:solid dodgerblue 2px;"
+                               type="button" id="btnSubmit">
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- 右边导航  pwd  -->
+        <div id="right_three" class="rightbox hidden">
+            <!-- 账号信息 -->
+            <p class="r_title">修改密码</p>
+            <!-- 信息 -->
+            <div class="per_box">
+                <div class="p_box">
+                    <form autocomplete="off" method="post" id="form_PWD" class="nice-validator n-default"
+                          novalidate="novalidate">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>请输入旧密码</td>
+                                <td>&nbsp;&nbsp;
+                                    <input type="password" value="" maxlength="16" name="oldPwd" id="text_pwd"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>请输入新密码</td>
+                                <td>&nbsp;&nbsp;
+                                    <input required="true" type="password" value="" maxlength="16" name="newPwd"
+                                           id="text_pwd1"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>确认密码</td>
+                                <td>&nbsp;&nbsp;
+                                    <input required="true" type="password" value="" maxlength="16" name="newPwd2"
+                                           id="text_pwd2"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;&nbsp;
+                                    <input required="true" type="button" value="确认" style="width: 87px; height: 41px;"
+                                           class="EmailBtn"
+                                           data-value="2" id="log_2"/></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右边导航 已开课程 -->
+        <div id="right_four" class="rightbox hidden">
+            <p class="r_title">已开课程</p>
+            <!-- 信息 -->
+            <div class="collect" id="open_collect">
+
+            </div>
+        </div>
+
+        <!-- 右边导航 待开课程 -->
+        <div id="right_five" class="rightbox hidden">
+            <p class="r_title">待开课程</p>
+            <!-- 信息 -->
+            <div class="collect" id="close_course">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(".m_title").click(function () {
+            var id = $(this).attr("data-val");
+            var str = $(this).attr("data-attr");
+            if (str == "open") {
+                $("#q_text_" + id).slideDown(300);
+                $(this).attr("data-attr", "");
+            } else {
+                $("#q_text_" + id).slideUp(300);
+                $(this).attr("data-attr", "open");
+            }
+        });
+
+        $("a.m_option").click(function () {
+            var op = $(".ph");
+            op.removeClass("ph");
+            $(this).addClass("ph");
+
+            var nothidden = $("div.rightbox");
+            nothidden.addClass("hidden");
+
+            var m_option_id = $(this).attr("id");
+            $("div#" + m_option_id).removeClass("hidden");
+
+        });
+
+        $("a.m_option").css("cursor", "pointer");
+
+        $(function loadInfo() {
+            if (!window.sessionStorage) {
+                alert("浏览器不支持sessionStorage");
+            } else {
+                var storage = window.sessionStorage;
+                var userdata = JSON.parse(storage["userdata"]);
+                console.log(userdata);
+
+                if ($.isEmptyObject(userdata)) {
+                    console.log("数据为空！");
+                } else {
+                    $(".userName").text(userdata.userName);
+                    $(".realName").text(userdata.realName);
+                    $(".imageUrl").attr("src", userdata.imageUrl);
+                    $("#realName").text(userdata.realName);
+                    $("#description").val(userdata.description);
+                    $("span.student_name").html(userdata.userName);
+                }
+            }
+
+            //修改信息
+            $("#btnSubmit").click(function () {
+                var data = userdata;
+
+                data.description = $("#description").val();
+                data.gender = $("input[name=sex]:checked").val();
+                var fd = new FormData();
+                fd.append('userId', data.userId);
+                fd.append('realName', data.realName);
+                fd.append('description', data.description);
+                fd.append('gender', data.gender);
+                fd.append('file', $("#imageUrl")[0].files[0]);
+                console.log(data);
+
+                $.ajax({
+                    type: 'post',
+                    url: 'teacher/updateTeacherById',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    enctype: 'multipart/form-data',
+                    success: function (data) {
+                        console.log(data);
+
+                        if (data.code == 1) {
+                            if (!window.sessionStorage) {
+                                alert("浏览器不支持sessionStorage");
+                            } else {
+                                alert("修改信息成功！");
+                                var storage = window.sessionStorage;
+                                storage.clear();
+                                storage.setItem("userdata", JSON.stringify(data.data));
+                                console.log(storage["userdata"]);
+
+                                window.location.reload();
+                            }
+                        } else if (data.code == -1) {
+                            alert("修改失败！");
+                        } else {
+                            var storage = window.sessionStorage;
+                            storage.clear();
+
+                            alert("请登录！");
+                            window.location.href = "index.html";
+                        }
+                    }
+                });
+            });
+
+            //修改密码
+            $("#log_2").click(function () {
+                var oldPassword = $("#text_pwd").val();
+                var newPassword = $("#text_pwd1").val();
+                var twoPassword = $("#text_pwd2").val();
+
+                if (newPassword != twoPassword) {
+                    alert('两次密码不一样');
+                    return;
+                }
+                var data = {userId: userdata.userId, oldPassword: oldPassword, newPassword: newPassword};
+
+                $.ajax({
+                    type: 'post',
+                    url: 'teacher/changeTeacherPassWord',
+                    data: data,
+                    success: function (data) {
+                        console.log(data)
+                        if (data.code == 1) {//成功！
+                            alert(data.codeMsg);
+
+                            window.location.reload();
+                        } else if (data.code == -10) {
+                            alert(data.codeMsg);
+                        } else {
+                            var storage = window.sessionStorage;
+                            storage.clear();
+
+                            alert("请登录！");
+                            window.location.href = "index.html";
+                        }
+                    }
+                });
+            });
+
+            //获取已开课程信息
+            $("#right_four").click(function () {
+                $.ajax({
+                    type: 'post',
+                    url: 'teacher/getOpenCourseByUserId',
+                    data: {
+                        userId: userdata.userId
+                    },
+                    success: function (data) {
+                        console.log(data);
+
+                        $("#open_collect").children().remove();
+
+                        if (data.length == 0) {
+                            $("#open_collect").append("<h4>暂无课程信息！</h4>");
+                        } else if (data.length > 0 && data.length < 100) {
+                            for (var i = 0; i < data.length; i++) {
+                                $("#open_collect").append(
+                                    "<a target='_blank' href='teacher_openedcourse_detail.html?courseId=" + data[i].courseId + "' style='cursor: pointer;'>" +
+                                    "<ul id='ulList' class='c_bottom'><li></li> <li class='b_li'>" +
+                                    "<p><img src='" + data[i].imageUrl + "' style='width:217px;height:181px;' alt=''/></p>" +
+                                    "<p>" + data[i].courseName + "</p>" +
+                                    "</li> </ul> </a>"
+                                );
+                            }
+                        } else {
+                            var storage = window.sessionStorage;
+                            storage.clear();
+
+                            alert("请登录！");
+                            window.location.href = "index.html";
+                        }
+                    }
+                });
+            });
+
+            //获取未开课程信息
+            $("#right_five").click(function () {
+                $.ajax({
+                    type: 'post',
+                    url: 'teacher/getCloseCourseByUserId',
+                    data: {
+                        userId: userdata.userId
+                    },
+                    success: function (data) {
+                        console.log(data);
+
+                        $("#close_course").children().remove();
+
+                        if (data.length == 0) {
+                            $("#close_course").append("<h4 style='font-size: 18px;'>暂无课程信息！</h4>");
+                        } else if (data.length > 0 && data.length < 100) {
+                            for (var i = 0; i < data.length; i++) {
+                                $("#close_course").append(
+                                    "<a target='_blank' href='teacher_unopenedcourse_detail.html?courseId=" + data[i].courseId + "' style='cursor: pointer;'>" +
+                                    "<ul id='ulList' class='c_bottom'><li></li> <li class='b_li'>" +
+                                    "<p><img src='" + data[i].imageUrl + "' style='width:217px;height:181px;' alt=''/></p>" +
+                                    "<p>" + data[i].courseName + "</p>" +
+                                    "</li> </ul> </a>"
+                                );
+                            }
+                        } else {
+                            var storage = window.sessionStorage;
+                            storage.clear();
+
+                            alert("请登录！");
+                            window.location.href = "index.html";
+                        }
+
+                        $("#close_course").append(
+                            "<a title='添加课程' class='ml-5' style='text-decoration:none; cursor:pointer;' href='javascript:;' onclick='teacher_course_edit()'>" +
+                            "<ul id='ulList' class='c_bottom'><li></li> <li class='b_li'>" +
+                            "<p><img src='images/pluscourse.jpg' style='width:217px;height:181px;' alt=''/></p>" +
+                            "<p>添加课程</p>" +
+                            "</li> </ul> </a>"
+                        );
+                    }
+                });
+            });
+        });
+
+        function userLogout() {
+            $.ajax({
+                type: 'post',
+                url: 'user/logout',
+                success: function () {
+                    if (!window.sessionStorage) {
+                        alert("浏览器不支持sessionStorage");
+                        return false;
+                    } else {
+                        var storage = window.sessionStorage;
+                        alert("退出成功");
+                        storage.clear();
+
+                        window.location.href = 'index.html';
+                    }
+                }
+            });
+        }
+
+        function changepic(obj) {
+            ////这里可以获取上传文件的name
+            var newsrc = getObjectURL(obj.files[0]);
+            document.getElementById('imgUserFace').src = newsrc;
+        }
+
+        //建立一個可存取到該file的url
+        function getObjectURL(file) {
+            var url = null;
+            // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+
+        layui.use(['laydate', 'element', 'laypage', 'layer'], function () {
+            $ = layui.jquery;//jquery
+            laydate = layui.laydate;//日期插件
+            lement = layui.element();//面包导航
+            laypage = layui.laypage;//分页
+            layer = layui.layer;//弹出层
+
+            //以上模块根据需要引入
+            laypage({
+                cont: 'page'
+                , pages: 100
+                , first: 1
+                , last: 100
+                , prev: '<em></em>'
+                , next: '<em></em>'
+            });
+
+            layer.ready(function () { //为了layer.ext.js加载完毕再执行
+                layer.photos({
+                    photos: '#x-img'
+                    //,shift: 5 //0-6的选择，指定弹出图片动画类型，默认随机
+                });
+            });
+
+        });
+
+        function teacher_course_edit() {
+            x_admin_show('添加课程', 'teacher_course_edit.html', '700', '600');
+        }
+
+        function x_admin_show(title, url, w, h) {
+            if (title == null || title == '') {
+                title = false;
+            }
+            if (url == null || url == '') {
+                url = "404.html";
+            }
+            if (w == null || w == '') {
+                w = 800;
+            }
+            if (h == null || h == '') {
+                h = ($(window).height() - 50);
+            }
+
+            layer.open({
+                type: 2,
+                area: [w + 'px', h + 'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade: 0.4,
+                title: title,
+                content: url
+            });
+        }
+
+
+    </script>
+
+</div>
+<!--底部footer-->
+<div class="clear"></div>
+
+</body>
+
+</html>

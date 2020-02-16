@@ -1,0 +1,29 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.formArea {
+width:1180px;margin:0px auto;padding:15px 0;clear:both;margin-bottom:30px;}
+
+
+
+/*  帮助中心的左边   */
+.helpleft{ width:230px; min-height:300px; font:12px/25px "宋体"; margin:0 auto; float:left; color:#656565; }
+
+.helpp{ background:#0093DD; height:19px; line-height:19px; color:#fff; padding:10px; width:190px;}
+.helpp img{padding-right:10px;}
+.helpp b{ font:bold 14px/19px "宋体"; }
+
+.wombox{ width:230px; margin:0 auto; display:inline-block; overflow:hidden; }
+.wombox img{padding-right:7px;}
+.wombox li{float:left; display:block;  padding:0 15px; width:180px; height:35px; line-height:35px; background:#F2F2F2;}
+
+/*  帮助中心的右边   */
+.helprightTitle {
+background:#f7f7f7;padding:5px 10px;border:#cccccc solid 1px;font-size:18px;font-family:'Microsoft YAHEI';margin-bottom:20px;}
+
+.helpright{ width:948px; margin:0 auto; font:14px/25px "宋体"; min-height:300px;  float:left; color:#656565; }
+.helpright h3,.helpright h1{ text-align:center; color:#000; line-height:50px; height:50px;}
+
+
+.clearForm {
+clear:both;height:1px;margin-bottom:20px;}

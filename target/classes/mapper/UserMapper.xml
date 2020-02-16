@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xzc.mapper.UserMapper">
+    <!--分页查找所有学习者-->
+    <select id="selectAllStudentByPage" resultType="com.xzc.model.Student">
+        select s.studentId, u.userId,u.userName,u.`passWord`, u.role,u.realName,u.gender, u.address,u.imageUrl,u.description,u.skinColor
+        from t_user u,t_student s
+        where u.userId = s.userId limit #{currentPage},#{pageSize}
+    </select>
+
+    <!--分页查找所有学习者BY   userName-->
+    <select id="selectStudentByPageByName" resultType="com.xzc.model.Student">
+        select * from t_user u,t_student s
+        where u.userId = s.userId
+        <if test="userName != null and userName !=''">
+            AND userName like concat(#{userName},'%') ORDER BY userName
+        </if>
+        limit #{currentPage},#{pageSize}
+    </select>
+
+    <!--查找所有学习者BY用户名-->
+    <select id="selectStudentByName" resultType="com.xzc.model.Student">
+        select * from t_user u,t_student s
+        where u.userId = s.userId
+        <if test="userName != null and userName !=''">
+            AND userName like concat(#{userName},'%') ORDER BY userName
+        </if>
+    </select>
+
+    <!--删除学习者通过id-->
+    <delete id="deleteStudentByUserId" parameterType="int">
+        delete from t_user
+        where userId = #{userId,jdbcType=INTEGER}
+    </delete>
+
+</mapper>

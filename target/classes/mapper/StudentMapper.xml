@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xzc.mapper.StudentMapper">
+
+    <!--自定义返回类型  一级分类包含二级分类-->
+    <resultMap id="SelectCourseAndCourse" type="com.xzc.model.SelectCourse">
+        <id property="selectCourseId" column="selectCourseId" javaType="java.lang.Integer"/>
+        <result property="userId" column="userId" javaType="java.lang.Integer"/>
+        <result property="courseId" column="courseId" javaType="java.lang.Integer"/>
+
+        <collection property="courseList" column="courseId" select="com.xzc.mapper.CourseMapper.getCourseByCourseId">
+
+        </collection>
+    </resultMap>
+
+    <resultMap id="UnitAndKPAndRecourse" type="com.xzc.model.CourseUnit">
+        <id property="courseUnitId" column="courseUnitId" javaType="java.lang.Integer"/>
+        <result property="courseId" column="courseId" javaType="java.lang.Integer"/>
+        <result property="courseUnitName" column="courseUnitName" javaType="java.lang.String"/>
+        <collection property="courseKpList" column="courseUnitId" select="com.xzc.mapper.CourseKpMapper.getCourseKPByCourseUnitId">
+        </collection>
+    </resultMap>
+
+    <select id="getAllSelectCourseByUserId" resultMap="SelectCourseAndCourse">
+       select * from t_selectcourse where userId = #{userId}
+    </select>
+
+    <!--<select id="getRecommendCourseByUserId" resultMap="SelectCourseAndCourse">-->
+        <!--select * from t_course where courseId in (select courseId from t_selectcourse where userId = #{userId})-->
+    <!--</select>-->
+
+    <select id="getCourseAndUnitAndKpAndRecourseByCourseId" resultMap="UnitAndKPAndRecourse">
+        select * from t_courseunit where courseId = #{courseId}
+    </select>
+
+    <delete id="deleteStudentById" parameterType="int">
+        delete from t_student
+        where userId = #{userId,jdbcType=INTEGER}
+    </delete>
+
+    <!--通过userID查找学习者-->
+    <select id="selectStuByUserId" parameterType="int" resultType="com.xzc.model.Student">
+        select  s.studentId, u.userId,u.userName,u.`passWord`, u.role,u.realName,u.gender, u.address,u.imageUrl,u.description,u.skinColor
+        from t_student s, t_user u where s.userId = u.userId and s.userId = #{userId,jdbcType=INTEGER}
+    </select>
+
+</mapper>

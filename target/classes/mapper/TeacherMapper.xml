@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xzc.mapper.TeacherMapper">
+
+    <select id="getOpenCourseByUserId" resultType="com.xzc.model.Course">
+        select * from t_course where courseId IN (select courseId from t_teachercourse where teacherId IN (select teacherId FROM t_teacher where userId = #{userId}) and flag = 'yes');
+    </select>
+
+    <select id="getCloseCourseByUserId" resultType="com.xzc.model.Course">
+        select * from t_course where courseId IN (select courseId from t_teachercourse where teacherId IN (select teacherId FROM t_teacher where userId = #{userId}) and flag = 'no');
+    </select>
+
+    <!--删除教师-->
+    <delete id="deleteTeacherByUserId" parameterType="int">
+        delete from t_teacher
+        where userId = #{userId,jdbcType=INTEGER}
+    </delete>
+
+    <!--通过userID查找教师-->
+    <select id="selectTeByUserId" parameterType="int" resultType="com.xzc.model.Teacher">
+        select t.teacherId, u.userId,u.userName,u.`passWord`, u.role,u.realName,u.gender, u.address,u.imageUrl,u.description,u.skinColor
+        from t_teacher t, t_user u where t.userId = u.userId and t.userId = #{userId,jdbcType=INTEGER}
+    </select>
+
+    <!--分页查找所有教师-->
+    <select id="selectAllTeacherByPage" resultType="com.xzc.model.Teacher">
+        select t.teacherId, u.userId,u.userName,u.`passWord`, u.role,u.realName,u.gender, u.address,u.imageUrl,u.description,u.skinColor
+        from t_user u,t_teacher t
+        where u.userId = t.userId limit #{currentPage},#{pageSize}
+    </select>
+
+    <!--分页查找所有教师BY   userName-->
+    <select id="selectTeacherByPageByName" resultType="com.xzc.model.Teacher">
+        select * from t_user u,t_teacher t
+        where u.userId = t.userId
+        <if test="userName != null and userName !=''">
+            AND userName like concat(#{userName},'%') ORDER BY userName
+        </if>
+        limit #{currentPage},#{pageSize}
+    </select>
+
+    <!--查找所有教师BY用户名-->
+    <select id="selectTeacherByName" resultType="com.xzc.model.Teacher">
+        select * from t_user u,t_teacher t
+        where u.userId = t.userId
+        <if test="userName != null and userName !=''">
+            AND userName like concat(#{userName},'%') ORDER BY userName
+        </if>
+    </select>
+
+    <insert id="addNewCoursePic" useGeneratedKeys="true" keyProperty="courseId" parameterType="com.xzc.model.Course">
+        insert into t_course (courseName, courseSortTwoId, imageUrl, description, flag) values(#{courseName}, #{courseSortTwoId}, #{imageUrl}, #{description}, 'no')
+    </insert>
+
+    <insert id="addNewCourse" useGeneratedKeys="true" keyProperty="courseId" parameterType="com.xzc.model.Course">
+        insert into t_course (courseName, courseSortTwoId, description, flag) values(#{courseName}, #{courseSortTwoId}, #{description}, 'no')
+    </insert>
+
+    <insert id="addCourseUnit" useGeneratedKeys="true" keyProperty="courseUnitId" parameterType="com.xzc.model.CourseUnit">
+        insert into t_courseunit (courseId, courseUnitName) values(#{courseId}, #{courseUnitName})
+    </insert>
+
+    <insert id="addCourseKP" useGeneratedKeys="true" keyProperty="courseKPId" parameterType="com.xzc.model.CourseKp">
+        insert into t_courseKp (courseUnitId, courseKPName,courseKPLocation) values(#{courseUnitId}, #{courseKPName}, #{courseKPLocation})
+    </insert>
+</mapper>

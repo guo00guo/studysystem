@@ -1,0 +1,51 @@
+﻿@charset "utf-8";
+/* CSS Document */
+ p,a{ color:#111111}
+.xz_title{ margin:0 auto; height:35px; font:12px/35px "宋体"}
+.xz_title em{ color:#0093DD}
+.xz_title span{ color:#EB6100}
+
+/*   左边   */
+.zx_box_left{ width:655px; float:left; margin:0 auto; font:12px/25px "宋体" ;}
+.zx_box_right{ width:321px; float:right; margin:0 auto; }
+
+.lefttitle{ background:url(../images/xz_title.png) no-repeat; width:651px; height:44px; position:relative; font: bold 14px/44px "宋体" }
+.lefttitle span{ position:absolute; top:0px; left:150px;}
+.lefttitle strong{ position:absolute; top:0px; right:70px;}
+.xz_list{ width:644px; margin:0 auto; float:left; display:inline; overflow:hidden;  font:12px/25px "宋体"}
+.xz_height{ font:14px/50px "宋体"; padding-top:10px;}
+.xz_height img{ padding-right:20px;}
+.xz_list li{ width:644px; display:block; overflow:hidden;}
+.xz_li{ width:490px; float:left; display:back; padding:10px;}
+.bt{ color:#0093DD; font:14px/35px "宋体" }
+.xz_list em{ color:#0093DD}
+.xz_list span{ color:#EB6100}
+.zx_data{ float:right; text-align:center;  display:block;}
+.zx_data p{  margin-top:90px; font-size:14px; text-align:center;}
+
+.fenyebox{ width:511px; height:25px; margin:0 auto; margin-top:30px; border:1px solid #000}
+
+/*   右边  */
+.xz_right{ width:321px; margin:0 auto; background:url(../images/xz_r.png) no-repeat center bottom; width:321px; height:44px; }
+.xz_right song{ font:15px/44px "微软雅黑"; color:#83C325}
+.zx_box_right .rlist {padding:15px; margin:0 auto; width:290px; height:476px; background:#f9f9f9; border:1px solid #EEEEEE}
+.rlist li{ width:290px; display:block; overflow:hidden; float:left; font:12px/20px "宋体"; }
+.rlist li p{ padding:12px 0px;}
+.rlist li #xzspan{ padding:0 8px; position:relative; background:#eb6100; position:relative; top:0; left:0px;}
+.rlist li span{ padding:0 8px; position:relative; background:#ababab; position:relative; top:0; left:0px;}
+.rlist li i{ padding:0 5px; position:absolute; color:#fff; top:-4px; font:bold 12px/20px "宋体"; left:0px;}
+
+.xz_one{  margin:0 auto; width:290px; height:92px; font:12px/20px "宋体"; position:relative; }
+.xz_one img{ position:absolute; top:0px; left:25px; width:115px; height:81px; overflow:hidden}
+.xz_one h3{ font: bold 14px/20px "宋体"; color:#515151}
+.onebox{ position:absolute;  top:0px; right:0px; width:140px;}
+.xz_one span{ padding:0 5px; position:absolute; background:#eb6100; position:relative; top:10px; left:0px;}
+.xz_one span i{ font:bold 12px/25px "微软雅黑"; color:#fff}
+
+.xz_right2{ width:321px; margin:0 auto; background:url(../images/xz_r_2.png) no-repeat center bottom; width:321px; font:12px/25px "宋体" ; }
+.xz_right2 song{font:15px/44px "微软雅黑"; color:#83C325}
+.rlist2 { width:321px; margin:0 auto;  display:inline; background:#f9f9f9; text-align:center;}
+.rlist2 li{ width:150px; height:158px; margin-right:15px; padding:20px 0; display:block; float:left; overflow:hidden; text-align:center; position:relative;}
+.rlist2 b{ width:33px; height:31px; position:absolute; right:15px; bottom:78px;}
+.rlist2 h3{ color:#797979}
+.rlist2 span{ color:#EB6100}

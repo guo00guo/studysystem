@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xzc.mapper.CourseMapper">
+
+    <!--自定义返回类型  一级分类包含二级分类-->
+    <resultMap id="CourseAndUnit" type="com.xzc.model.Course">
+        <id property="courseId" column="courseId" javaType="java.lang.Integer"/>
+        <result property="courseName" column="courseName" javaType="java.lang.String"/>
+        <result property="courseSortTwoId" column="courseSortTwoId" javaType="java.lang.Integer"/>
+        <result property="imageUrl" column="imageUrl" javaType="java.lang.String"/>
+        <result property="description" column="description" javaType="java.lang.String"/>
+        <result property="flag" column="flag" javaType="java.lang.String"/>
+        <collection property="courseUnitList" column="courseId" select="com.xzc.mapper.CourseUnitMapper.getCourseUnitsByCourseId">
+        </collection>
+    </resultMap>
+
+    <select id="getCourseByCourseSortTwoId" resultType="com.xzc.model.Course">
+        select * from t_course where courseSortTwoId = #{courseSortTwoId}
+    </select>
+
+    <!--获取所有课程分类-->
+    <select id="getAllCourseWithPage" parameterType="java.util.Map" resultType="com.xzc.model.Course">
+        select * from t_course where 1=1
+        <if test="flag!=null">
+           and flag = #{flag}
+        </if>
+        limit ${(currentPage - 1) * pageSize},${pageSize}
+    </select>
+
+    <select id="countCourse" parameterType="java.util.Map" resultType="Integer">
+        select count(*) from t_course where 1=1
+        <if test="flag!=null">
+           and flag = #{flag}
+        </if>
+    </select>
+
+    <!--获取所有一级分类下的课程-->
+    <select id="getCourseByCourseTwoIdsWithPage" parameterType="java.util.Map" resultType="com.xzc.model.Course">
+            select * from t_course where courseSortTwoId IN
+            <foreach collection="courseTwoIds" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            <if test="flag!=null">
+               and flag = #{flag}
+            </if>
+            limit ${(currentPage - 1) * pageSize},${pageSize}
+        </select>
+
+    <select id="countCourseByCourseTwoIds" parameterType="java.util.Map" resultType="Integer">
+        select count(*) from t_course where courseSortTwoId IN
+        <foreach collection="courseTwoIds" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        <if test="flag!=null">
+           and flag = #{flag}
+        </if>
+    </select>
+
+    <!--获取所有二级分类下的课程-->
+        <select id="getCourseByCourseTwoIdWithPage" parameterType="java.util.Map" resultType="com.xzc.model.Course">
+            select * from t_course where courseSortTwoId  = #{courseTwoId}
+
+            <if test="flag!=null">
+               and flag = #{flag}
+            </if>
+            limit ${(currentPage - 1) * pageSize},${pageSize}
+        </select>
+
+        <select id="countCourseByCourseTwoId" parameterType="java.util.Map" resultType="Integer">
+            select count(*) from t_course where courseSortTwoId = #{courseTwoId}
+
+            <if test="flag!=null">
+               and flag = #{flag}
+            </if>
+        </select>
+
+
+        <!--获取搜索课程-->
+            <select id="getCourseByCourseName" parameterType="java.lang.String" resultType="com.xzc.model.Course">
+                select * from t_course where courseName like "%"#{courseName}"%" and flag = 'yes'
+
+            </select>
+
+            <select id="getCourseByUserId" parameterType="java.lang.Integer" resultType="com.xzc.model.Course">
+                 select * from t_course where courseId IN (select courseId from t_selectCourse where userId = #{userId})
+            </select>
+
+            <select id="countCourseByCourseName" parameterType="java.lang.String" resultType="Integer">
+                select count(*) from t_course where courseName like "%"#{courseName}"%" and flag = 'yes'
+            </select>
+
+
+        <select id="getCourseAndUnitAndKPByCourseId" parameterType="java.lang.Integer" resultMap="CourseAndUnit">
+            select * from t_course where courseId = #{courseId}
+        </select>
+
+        <select id="getCourseByCourseId" parameterType="java.lang.Integer" resultType="com.xzc.model.Course">
+            select * from t_course where courseId = #{courseId}
+        </select>
+
+</mapper>
