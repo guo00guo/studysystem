@@ -1,1 +1,0 @@
-BizQQWPA.define("util.onIframeLoaded",function(){return function(iframe,loaded){if(/loaded|complete|undefined/.test(iframe.readyState)){loaded()}else{if(iframe.attachEvent){var handler=function(){iframe.detachEvent("onload",handler);loaded()};iframe.attachEvent("onload",handler)}else{iframe.onload=function(){loaded();iframe.onload=null}}}}});
