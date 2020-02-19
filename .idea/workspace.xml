@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="042dfd68-24d1-4499-a525-26ccc815d7aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/xzc/controller/Cctrl/CController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,18 +69,18 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.xzc.controller.Cctrl" />
-      <recent name="com.xzc.util" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static" />
       <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static\video" />
       <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static\js" />
       <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.xzc.controller.Cctrl" />
+      <recent name="com.xzc.util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static" />
     </key>
   </component>
   <component name="RunDashboard">
