@@ -20,7 +20,7 @@ import java.util.List;
 public class ManagerController {
 
     @Autowired
-    StudentService managerService;
+    AccountService managerService;
 
     @Autowired
     AccountService accountService;
@@ -115,4 +115,65 @@ public class ManagerController {
         return Result.success(resourceList);
     }
 
+    @RequestMapping(value = "/getAllSelectCourseByUserId")
+    public List<SelectCourse> getAllSelectCourseByUserId(Integer userId) {
+        return accountService.getAllSelectCourseByUserId(userId);
+    }
+
+    //根据studentId获取推荐课程
+    @RequestMapping(value = "/getRecommendCourseByUserId")
+    public ArrayList<Course> getRecommendCourseByUserId(Integer userId) {
+        ArrayList<Integer> recommendResult = userCF.getRecommendResult(userId);
+        System.out.println("recommendResult.toString() = " + recommendResult.toString());
+        ArrayList<Course> recommendCourses = new ArrayList<Course>();
+        for (Integer courseId:recommendResult) {
+            System.out.println("courseId = " + courseId);
+            Course recommendCourse = accountService.getCourseAndUnitAndKPByCourseId(courseId);
+            System.out.println("recommendCourse = " + recommendCourse.toString());
+            recommendCourses.add(recommendCourse);
+        }
+        System.out.println("recommendCourses.size() = " + recommendCourses.size());
+        return recommendCourses;
+    }
+
+    @RequestMapping(value = "/addCourseToSelectCourseByCourseId")
+    public Result addCourseToSelectCourseByCourseId(Integer courseId, Integer userId) {
+        System.out.println("courseId ==== userId      " + courseId + "   " + userId);
+        Integer i = accountService.addCourseToSelectCourseByCourseId(courseId, userId);
+
+        if(i == -1){
+            return Result.error(-1, "已经加入学习列表，去看看别的课程吧！");
+        }
+        return Result.success(i);
+    }
+
+    @RequestMapping(value = "/judgeSelectCourseByCourseIdAndUserId")
+    public Result judgeSelectCourseByCourseIdAndUserId(Integer courseId, Integer userId) {
+        System.out.println("courseId ==== userId      " + courseId + "   " + userId);
+        Integer i = accountService.judgeSelectCourseByCourseIdAndUserId(courseId, userId);
+
+        if(i == -1){
+            return Result.error(-1, "已经加入学习列表，去看看别的课程吧！");
+        }
+        return Result.success(i);
+    }
+
+    @RequestMapping(value = "/getCourseAndUnitAndKpAndRecourseByCourseId")
+    public Result getCourseAndUnitAndKpAndRecourseByCourseId(Integer courseId) {
+        List<CourseUnit> unitList = accountService.getCourseAndUnitAndKpAndRecourseByCourseId(courseId);
+        if(unitList == null || unitList.size() == 0){
+            return Result.error(-1, "获取课程信息失败！");
+        }
+        return Result.success(unitList);
+    }
+
+    @RequestMapping(value = "/getResourceByCourseKPId")
+    public Result getResourceByCourseKPId(Integer courseKPId) {
+        List<Resource> resourceList = accountService.getResourceByCourseKPId(courseKPId);
+
+        if(resourceList == null || resourceList.size() == 0){
+            return Result.error(-1, "获取资源失败！");
+        }
+        return Result.success(resourceList);
+    }
 }
