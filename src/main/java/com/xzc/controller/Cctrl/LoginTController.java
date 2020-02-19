@@ -1,4 +1,4 @@
-package com.xzc.controller;
+package com.xzc.controller.Cctrl;
 
 import com.xzc.model.*;
 import com.xzc.service.StudentService;
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/teacher")
-public class TeacherController {
+@RequestMapping("/LoginTController")
+public class LoginTController {
 
     @Autowired
     TeacherService teacherService;
@@ -141,6 +141,19 @@ public class TeacherController {
 
     @RequestMapping("/upLoadVideo")
     public Result upLoadVideo(MultipartFile file) {
+        System.out.println("TeacherController.upLoadVideo");
+        if (LoadFile.isAllow(file,LoadFile.allowVideo)) {
+            String videoUrl = LoadFile.upLoad(LoadFile.videoPath, file);
+            if (videoUrl != null) {
+                return Result.success("视屏上传成功");
+            }
+        }
+        return Result.error();
+    }
+
+    //上传视频
+    @RequestMapping("/upLoadVideo1")
+    public Result upLoadVideo1(MultipartFile file) {
         System.out.println("TeacherController.upLoadVideo");
         if (LoadFile.isAllow(file,LoadFile.allowVideo)) {
             String videoUrl = LoadFile.upLoad(LoadFile.videoPath, file);
