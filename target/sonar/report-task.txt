@@ -1,6 +1,0 @@
-projectKey=com.xzc:studySystem
-serverUrl=http://127.0.0.1:9000/sonar
-serverVersion=7.5.0.20543
-dashboardUrl=http://127.0.0.1:9000/sonar/dashboard?id=com.xzc%3AstudySystem
-ceTaskId=AXBYi4gPL2oKROpVNIRe
-ceTaskUrl=http://127.0.0.1:9000/sonar/api/ce/task?id=AXBYi4gPL2oKROpVNIRe
