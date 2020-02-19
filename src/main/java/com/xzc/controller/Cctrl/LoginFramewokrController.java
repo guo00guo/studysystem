@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.awt.*;
+
 @RestController
 @RequestMapping("/login/frame")
 public class LoginFramewokrController {
@@ -32,15 +34,16 @@ public class LoginFramewokrController {
             return Result.error(-1, "注册失败!");
         }
         else{
-            return login(new Integer(code).toString(), password);
+            return loginFrame(new Integer(code).toString(), password);
         }
     }
 
-    @RequestMapping("/login")
-    public Result login(String userName, String password) {
+    @RequestMapping("/loginFrame")
+    public Result loginFrame(String userName, String password) {
         UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
         Subject subject = SecurityUtils.getSubject();
         try {
+            SecurityUtils.getSubject();
             subject.login(token);
             User user = (User) subject.getPrincipal();
             return Result.success(user);
