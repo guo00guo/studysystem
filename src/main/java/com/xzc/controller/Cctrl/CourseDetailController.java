@@ -47,4 +47,16 @@ public class CourseDetailController {
         return courseTwo;
     }
 
+    @RequestMapping("/get/detail")
+    public CourseSortTwo getDetail(Integer courseSortTwoId) {
+        System.out.println("CourseSortTwo.getCourseSortTwoByCourseTwoId      " + courseSortTwoId);
+
+        CourseSortTwo courseTwo = courseSortTwoService.getCourseSortTwoByCourseTwoId(courseSortTwoId);
+        System.out.println(courseTwo.getCourseSortTwoName());
+
+        return courseTwo;
+    }
+
+
+
 }
