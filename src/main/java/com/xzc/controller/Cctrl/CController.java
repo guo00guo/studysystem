@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/Course")
+@RequestMapping("/recommand/Course")
 public class CController {
 
     @Autowired
@@ -122,7 +122,7 @@ public class CController {
 
     //返回关键词搜索已开课程
     @RequestMapping("/getCourseByCourseName")
-    public List<Course> getCourseByCourseName(String courseName) {
+    public List<Course> getCourseByCourseNameSearch(String courseName) {
         System.out.println(courseName);
 
         //获取课程数据
@@ -149,6 +149,18 @@ public class CController {
             return Result.error();
         }
 
+//        CourseSortOne courseSortOne = courseService.getCourseSortOneByCourseSortOneId(courseSortTwo.getCourseSortOneId());
+//
+//        int count = courseService.getCountStudentsByCourseId(courseId);
+//
+//        CourseDetail courseDetail = new CourseDetail();
+//        courseDetail.setCourseSortTwo(courseSortTwo);
+//        courseDetail.setCourseSortOne(courseSortOne);
+//        courseDetail.setCourse(course);
+//        courseDetail.setUser(user);
+//        courseDetail.setCount(count);
+//
+//        return Result.success(courseDetail);
         //获取课程二分类信息
         CourseSortTwo courseSortTwo = courseService.getCourseSortTwoByCourseSortTwoId(course.getCourseSortTwoId());
 
