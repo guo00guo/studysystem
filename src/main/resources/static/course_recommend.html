@@ -364,50 +364,6 @@
                 }
             });
         }
-		//根据二级分类获取课程
-        function ajaxGetCourseByCourseTwoIds(){
-            $.ajax({
-                url: 'Course/getCourseByCourseSortTwos',
-                type: 'post',
-                traditional: true,
-                data: {
-                    currentPage: pageInfo.currentPage,
-                    pageSize: pageInfo.pageSize,
-                    courseTwoIds: courseTwoIds
-                },
-                dataType: "json",
-                success: function (data) {
-
-                    pageInfo.currentPage = data.pageNo;
-                    pageInfo.pageTotal = data.pageTotal;
-                    pageInfo.courseList = data.list;
-
-                    //清除上一页和下一页
-                    $(".page").children().remove("#prePage");
-                    $(".page").children().remove("#nextPage");
-                    $(".page").children().remove("#goPage");
-
-                    //当前页不为第一页，渲染上一页
-                    if(pageInfo.currentPage != 1){
-                        $(".page").prepend("<a id='prePage' onclick='preAjaxGetCourseByCourseTwoIds()'>上一页</a>");
-                    }
-
-                    $(".page").append("<a id='goPage' onclick='goAjaxGetCourseByCourseTwoIds()'>GO</a>");
-
-                    //当前页不为最后一页，渲染下一页
-                    if(pageInfo.currentPage != pageInfo.pageTotal){
-                        $(".page").append("<a id='nextPage' onclick='nextAjaxGetCourseByCourseTwoIds()'>下一页</a>");
-                    }
-
-                    $("#currentPage").text(pageInfo.currentPage);
-                    $("#totalPage").text(pageInfo.pageTotal);
-
-                    $("a").css("cursor", "pointer");
-
-                    createCourseList();
-                }
-            });
-        }
         //一级分类的课程上一页
         function preAjaxGetCourseByCourseTwoIds(){
             pageInfo.currentPage -= 1;
@@ -460,26 +416,6 @@
                         "<span class='s1'>"+
                         data.courseSortOneName +
                         "&gt;</span>");
-                }
-            });
-
-			//更新二级分类
-            $.ajax({
-                url: 'CourseSortTwo/getCourseSortTwoByCourseTwoId',
-                type: 'post',
-                data: {
-                    courseSortTwoId: courseSortTwoId
-                },
-                dataType: "json",
-                success: function (data) {
-                    $(".sort_ul02a").removeClass("clicked_ul02a");
-
-                    //更新当前位置的二级分类， 先删除当前的二级分类
-                    $("#currentTwo").remove();
-                    //获取当前的二级分类，并添加
-                    $(".currentBox").append("<span class='s1' id='currentTwo'>"+
-                        data.courseSortTwoName
-                        +"</span>");
                 }
             });
 
