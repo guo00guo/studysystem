@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="042dfd68-24d1-4499-a525-26ccc815d7aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/controller/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/model/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/shiro/ShiroConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/shiro/ShiroConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/util/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/util/LoadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/util/LoadFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/footer.html" afterDir="false" />
@@ -57,6 +52,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
