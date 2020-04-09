@@ -17,6 +17,7 @@ public class Course {
     private String description;
     @Excel(name="是否开课",orderNum = "6")
     private String flag;
+    private Integer userId;
     public Course(){}
     public Course(Integer courseId, String courseName, Integer courseSortTwoId, Integer userId, String imageUrl, String description, String flag, List<CourseUnit> courseUnitList) {
         this.courseId = courseId;
@@ -84,6 +85,15 @@ public class Course {
 
     public void setFlag(String flag) {
         this.flag = flag == null ? null : flag.trim();
+    }
+
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override

@@ -38,12 +38,10 @@
 
     <div id="sideMenuContainer"></div>
 
-    <div class="video-bullet" style="margin: 0 auto;background: black;">
-        <div id="video_box" style="width:100%;background:black;margin: 0 auto;">
-            <!--<video id="example_video_1" src="//player.bilibili.com/player.html?aid=29349122&cid=50969880&page=2" class="video-js vjs-default-skin" poster="video/big-data.jpg" controls="controls" width="980" height="500"  data-setup="{}" style="margin: 0 auto;padding: 0px;">&lt;!&ndash;'controls': true, 'autoplay': false, 'preload': 'auto' " &ndash;&gt;-->
-            <!--</video>-->
+    <div class="" style="margin: 0 auto;background: black;">
+        <div id="" style="width:100%;background:black;margin: 0 auto;">
             <embed src='' class="videoSrc" allowFullScreen='true' quality='high' width='100%' height='580px' align='middle'
-                   allowScriptAccess='always' type='application/x-shockwave-flash'>
+                   allowScriptAccess='always' type='video/mp4'>
         </div>
     </div>
 
@@ -66,6 +64,7 @@
 <script>
     var storage = window.sessionStorage;
     var studyKp_data = storage["studyKpdata"];
+    console.log(studyKpdata);
     var studyKpdata = JSON.parse(studyKp_data);
     var courseId = studyKpdata.courseId;
 
@@ -80,7 +79,7 @@
                 alert("请登录！");
                 window.location.href = "login.html";
             } else {
-
+                console.log(studyKpdata.data_courseKPLocation);
                 $(".videoSrc").attr("src", studyKpdata.data_courseKPLocation);
                 $("#danyuan").text(studyKpdata.data_courseKPName);
 
@@ -93,7 +92,7 @@
                         courseId: studyKpdata.courseId
                     },
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
                         $("#sideMenuContainer").children().remove();
 
                         for (var i = 0; i < data.data.length; i++) {

@@ -50,11 +50,11 @@
     </select>
 
     <insert id="addNewCoursePic" useGeneratedKeys="true" keyProperty="courseId" parameterType="com.xzc.model.Course">
-        insert into t_course (courseName, courseSortTwoId, imageUrl, description, flag) values(#{courseName}, #{courseSortTwoId}, #{imageUrl}, #{description}, 'no')
+        insert into t_course (courseName, courseSortTwoId, userId, imageUrl, description, flag) values(#{courseName}, #{courseSortTwoId}, #{userId}, #{imageUrl}, #{description}, 'no')
     </insert>
 
     <insert id="addNewCourse" useGeneratedKeys="true" keyProperty="courseId" parameterType="com.xzc.model.Course">
-        insert into t_course (courseName, courseSortTwoId, description, flag) values(#{courseName}, #{courseSortTwoId}, #{description}, 'no')
+        insert into t_course (courseName, courseSortTwoId, userId, description, flag) values(#{courseName}, #{courseSortTwoId}, #{userId}, #{description}, 'no')
     </insert>
 
     <insert id="addCourseUnit" useGeneratedKeys="true" keyProperty="courseUnitId" parameterType="com.xzc.model.CourseUnit">
@@ -62,6 +62,6 @@
     </insert>
 
     <insert id="addCourseKP" useGeneratedKeys="true" keyProperty="courseKPId" parameterType="com.xzc.model.CourseKp">
-        insert into t_courseKp (courseUnitId, courseKPName,courseKPLocation) values(#{courseUnitId}, #{courseKPName}, #{courseKPLocation})
+        insert into t_coursekp (courseUnitId, courseKPName,courseKPLocation) values(#{courseUnitId}, #{courseKPName}, #{courseKPLocation})
     </insert>
 </mapper>

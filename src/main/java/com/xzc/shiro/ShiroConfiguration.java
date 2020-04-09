@@ -22,19 +22,18 @@ public class ShiroConfiguration {
 
         bean.setLoginUrl("/index.html");
         bean.setSuccessUrl("/index.html");
-        bean.setUnauthorizedUrl("/unauthorized.html");
+//        bean.setUnauthorizedUrl("/unauthorized.html");
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 
-        filterChainDefinitionMap.put("/member*.html", "roles[student]");
-        filterChainDefinitionMap.put("/student*.html", "roles[student]");
-        filterChainDefinitionMap.put("/teacher*.html", "roles[teacher]");
-        //
-        filterChainDefinitionMap.put("/student_video.html", "roles[teacher]");
-        filterChainDefinitionMap.put("/admin*.html", "roles[admin]");
-        filterChainDefinitionMap.put("/admin/**", "roles[admin]");
-        filterChainDefinitionMap.put("/teacher/**", "roles[teacher]");
-        filterChainDefinitionMap.put("/student/**", "roles[student]");
-        filterChainDefinitionMap.put("/**", "anon");
+//        filterChainDefinitionMap.put("/member*.html", "roles[student]");
+//        filterChainDefinitionMap.put("/student*.html", "roles[student]");
+//        filterChainDefinitionMap.put("/teacher*.html", "roles[teacher]");
+//        filterChainDefinitionMap.put("/student_video.html", "roles[teacher]");
+//        filterChainDefinitionMap.put("/admin*.html", "roles[admin]");
+//        filterChainDefinitionMap.put("/admin/**", "roles[admin]");
+//        filterChainDefinitionMap.put("/teacher/**", "roles[teacher]");
+//        filterChainDefinitionMap.put("/student/**", "roles[student]");
+//        filterChainDefinitionMap.put("/**", "anon");
 
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return bean;

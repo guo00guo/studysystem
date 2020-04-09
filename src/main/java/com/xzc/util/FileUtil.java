@@ -49,7 +49,6 @@ public class FileUtil {
             workbook.write(response.getOutputStream());
         } catch (IOException e) {
 //            throw new NormalException(e.getMessage());
-            System.out.println("52....");
         }
     }
     private static void defaultExport(List<Map<String, Object>> list, String fileName, HttpServletResponse response) {
@@ -70,11 +69,9 @@ public class FileUtil {
             list = ExcelImportUtil.importExcel(new File(filePath), pojoClass, params);
         }catch (NoSuchElementException e){
 //            throw new NormalException("模板不能为空");
-            System.out.println("模板不能为空");
         } catch (Exception e) {
             e.printStackTrace();
 //            throw new NormalException(e.getMessage());
-            System.out.println("76...");
         }
         return list;
     }
@@ -89,11 +86,7 @@ public class FileUtil {
         try {
             list = ExcelImportUtil.importExcel(file.getInputStream(), pojoClass, params);
         }catch (NoSuchElementException e){
-//            throw new NormalException("excel文件不能为空");
-            System.out.println("excel文件不能为空");
         } catch (Exception e) {
-//            throw new NormalException(e.getMessage());
-            System.out.println("94...");
         }
         return list;
     }

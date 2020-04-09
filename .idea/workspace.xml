@@ -3,8 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="042dfd68-24d1-4499-a525-26ccc815d7aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/controller/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/model/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/shiro/ShiroConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/shiro/ShiroConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/util/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xzc/util/LoadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xzc/util/LoadFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/student_video.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/student_video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/studySystem.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xzc/controller/TeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xzc/controller/TeacherController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xzc/model/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xzc/model/Course.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xzc/shiro/ShiroConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xzc/shiro/ShiroConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xzc/util/FileUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xzc/util/FileUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xzc/util/LoadFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xzc/util/LoadFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/TeacherMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/student_video.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/student_video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/sonar/.sonar_lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/sonar/report-task.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,21 +86,23 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.xzc.mapper" />
+      <recent name="com.xzc.controller.Cctrl" />
+      <recent name="com.xzc.util" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static" />
       <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static\video" />
       <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static\js" />
       <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.xzc.controller.Cctrl" />
-      <recent name="com.xzc.util" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\Document\Project\studySystem\studySystem\src\main\resources\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -111,7 +132,7 @@
       </method>
     </configuration>
     <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="studySystem" />
+      <module name="studysystem" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.xzc.App" />
       <option name="ENABLE_LAUNCH_OPTIMIZATION" value="false" />
       <option name="ENABLE_JMX_AGENT" value="false" />
@@ -209,6 +230,7 @@
       <workItem from="1581855319492" duration="424000" />
       <workItem from="1581862622838" duration="2061000" />
       <workItem from="1582191041287" duration="1000" />
+      <workItem from="1586337403822" duration="3916000" />
     </task>
     <servers />
   </component>
@@ -236,6 +258,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xzc/controller/StudentController.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

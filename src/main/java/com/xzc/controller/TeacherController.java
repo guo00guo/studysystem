@@ -59,6 +59,7 @@ public class TeacherController {
     @RequestMapping(value = "/addNewCourse", method = RequestMethod.POST)
     public Result addNewCourse(Course course,Integer userId, MultipartFile file) {
         System.out.println(course.toString());
+        course.setUserId(userId);
         teacherService.addNewCourse(course,file);
         System.out.println("userId = " + userId);
         Integer courseId = course.getCourseId();
